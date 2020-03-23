@@ -1,5 +1,12 @@
 package com.bishe.logistics_management.database.dataObject;
 
+import org.apache.ibatis.type.Alias;
+
+/**
+ * 公司数据类
+ * @author 黄伟
+ */
+@Alias("companyObject")
 public class CompanyObject {
     int id;//公司ID
     int userid;//业务经理ID
