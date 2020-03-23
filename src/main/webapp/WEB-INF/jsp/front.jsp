@@ -42,14 +42,14 @@
                             <dd><a href="/todolist">待办事项</a></dd>
                             <c:if test="${permission.users==1 || permission.orders==1 || permission.plan==1 || permission.warehouse==1||permission.affairs==1}"><dd><a href="/announce">发布通知</a></dd></c:if>
                             <c:if test="${permission.users==2}"><dd><a href="https://www.baidu.com">员工操作</a></dd></c:if>
-                            <c:if test="${permission.users==1}"><dd><a href="https://www.baidu.com">主管操作</a></dd></c:if>
+                            <c:if test="${permission.users==1}"><dd><a href="/approvelist">用户审核</a></dd></c:if>
                         </dl>
                     </li>
 
 
                 <c:if test="${permission.orders != 0}" >
                 <li class="layui-nav-item">
-                    <a class="" href="javascript:;">订单管理</a>
+                    <a class="" href="javascript:;">营销管理</a>
                     <dl class="layui-nav-child">
                         <c:if test="${permission.orders==2}"><dd><a href="https://www.baidu.com">员工操作</a></dd></c:if>
                         <c:if test="${permission.orders==1}"><dd><a href="https://www.baidu.com">主管操作</a></dd></c:if>
