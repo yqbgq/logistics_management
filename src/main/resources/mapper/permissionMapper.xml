@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bishe.logistics_management.database.dao.PermissionDao" >
+
+    <insert id="insertPermission" parameterType="com.bishe.logistics_management.database.dataObject.PermissionObject">
+        insert into permission values(
+                                             #{id},#{users},#{orders},#{plan},#{affairs},#{warehouse}
+                                             )
+    </insert>
+
+    <select id="getPermission" parameterType="Integer"  resultType="com.bishe.logistics_management.database.dataObject.PermissionObject">
+        select * from permission where id = #{arg0}
+    </select>
+
+</mapper>

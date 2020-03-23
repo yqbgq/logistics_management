@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bishe.logistics_management.database.dao.NoticeDao" >
+
+    <insert id="insertNotice" parameterType="com.bishe.logistics_management.database.dataObject.NoticeObject">
+        insert into notice(department,departmentname,fromid,fromuser,content,time) values(#{department},
+                                                                                     (select name from compare where id=#{department})
+                                                                                            ,#{fromid},
+                                                                      (select name from users where id = #{fromid})
+                                                                             ,#{content},#{time})
+
+    </insert>
+
+    <select id="getNotice" parameterType="Integer"  resultType="com.bishe.logistics_management.database.dataObject.NoticeObject">
+        select * from notice where department = #{arg0} and time>=now() order by id desc
+
+    </select>
+
+</mapper>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bishe.logistics_management.database.dao.UsersDao" >
+
+    <select id="getUser" parameterType="long" resultType="com.bishe.logistics_management.database.dataObject.UsersObject">
+        select * from users where id = #{id}
+    </select>
+
+    <select id="check" parameterType="String" resultType="int">
+        select count(*) from users where name = #{arg0} and password = #{arg1} and available=1
+    </select>
+
+    <select id="getUserByAll" parameterType="String"  resultType="com.bishe.logistics_management.database.dataObject.UsersObject">
+        select * from users where name = #{arg0} and password = #{arg1}
+    </select>
+
+    <insert id="createUser" parameterType="com.bishe.logistics_management.database.dataObject.UsersObject">
+        insert into users(name,sex,password,department,job,email,phone,available,addition) values(
+                        #{name},#{sex},#{password},#{department},#{job},#{email},#{phone},#{available},#{addition}
+                                                                                            )
+    </insert>
+
+    <select id="findAllApprovement" resultType="com.bishe.logistics_management.database.dataObject.UsersObject">
+        SELECT * FROM users WHERE available=0
+    </select>
+
+    <update id="changeState" parameterType="int">
+        update users set available = 1 where id = #{id};
+    </update>
+
+    <select id="findAllUserExceptMe" parameterType="int" resultType="com.bishe.logistics_management.database.dataObject.UsersObject">
+        select * from users where id != #{arg0} and available = 1
+    </select>
+
+    <update id="resubmit" parameterType="com.bishe.logistics_management.database.dataObject.UsersObject">
+        update users set name=#{name},password=#{password},email=#{email},phone=#{phone},addition=#{addition} where id=#{id}
+    </update>
+</mapper>
+

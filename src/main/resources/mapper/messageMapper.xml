@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bishe.logistics_management.database.dao.MessageDao" >
+
+    <insert id="insertMessage" parameterType="com.bishe.logistics_management.database.dataObject.MessageObject">
+        insert into message(fromer,toer,message,fromuser) values(
+                                             #{fromer},#{toer},#{message},(select name from users where id = #{fromer})
+                                             )
+    </insert>
+
+    <select id="getMessage" parameterType="Integer" resultType="com.bishe.logistics_management.database.dataObject.MessageObject">
+        select * from message where toer = #{arg0}
+
+    </select>
+
+</mapper>

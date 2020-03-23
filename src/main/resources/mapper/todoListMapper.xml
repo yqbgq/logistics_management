@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bishe.logistics_management.database.dao.TodoListDao" >
+
+    <insert id="insertTodoList" parameterType="com.bishe.logistics_management.database.dataObject.TodoListObject">
+        insert into todolist(userid,time,content) values(#{userid},#{time},#{content})
+
+    </insert>
+
+    <select id="getTodoList" parameterType="Integer"  resultType="com.bishe.logistics_management.database.dataObject.TodoListObject">
+        select * from todolist where userid = #{arg0} and time>=now() order by time
+
+    </select>
+
+</mapper>
