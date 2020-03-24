@@ -2,8 +2,10 @@ package com.bishe.logistics_management.Controller;
 
 import com.bishe.logistics_management.Utils.CookieUtil;
 import com.bishe.logistics_management.Utils.UserUtil;
+import com.bishe.logistics_management.database.dataObject.CarObject;
 import com.bishe.logistics_management.database.dataObject.CompanyObject;
 import com.bishe.logistics_management.database.dataObject.UsersObject;
+import com.bishe.logistics_management.database.service.CarService;
 import com.bishe.logistics_management.database.service.CompanyService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -66,6 +68,49 @@ public class PlanController {
             companyObject.setPerson(person);
             companyObject.setPhone(phone);
             CompanyService.insertCompany(companyObject);
+        }else{
+            mv.setViewName("redirect:/log");
+        }
+        return mv;
+    }
+
+    @RequestMapping("/addcar")
+    public ModelAndView addCar(HttpServletRequest request){
+        ModelAndView mv = new ModelAndView();
+        if(CookieUtil.checkLogIn(mv,request)){
+            mv.setViewName("addcar");
+        }else{
+            mv.setViewName("redirect:/log");
+        }
+        return mv;
+    }
+
+    @RequestMapping("/addcarcheck")
+    public ModelAndView addCarCheck(HttpServletRequest request,
+                                    @RequestParam("driver") String driver,
+                                    @RequestParam("phone") String phone,
+                                    @RequestParam("brand") String brand,
+                                    @RequestParam("type") String type,
+                                    @RequestParam("length") int length,
+                                    @RequestParam("size") int size,
+                                    @RequestParam("times") String times,
+                                    @RequestParam("tags") String tags,
+                                    @RequestParam("number") String number){
+        ModelAndView mv = new ModelAndView();
+        if(CookieUtil.checkLogIn(mv,request)){
+            mv.setViewName("redirect:/addcar");
+            CarObject carObject = new CarObject();
+            carObject.setBrand(brand);
+            carObject.setCapacity(size);
+            carObject.setSize(size);
+            carObject.setDriver(driver);
+            carObject.setLength(length);
+            carObject.setPhone(phone);
+            carObject.setType(type);
+            carObject.setTimes(times);
+            carObject.setTags(tags);
+            carObject.setNumber(number);
+            CarService.insertCar(carObject);
         }else{
             mv.setViewName("redirect:/log");
         }

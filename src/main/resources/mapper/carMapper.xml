@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bishe.logistics_management.database.dao.CarDao" >
+
+    <insert id="insertCar" parameterType="com.bishe.logistics_management.database.dataObject.CarObject">
+        insert into car(driver,phone,type,brand,times,length,size,capacity,tags,number) values(
+                       #{driver},#{phone},#{type},#{brand},#{times},#{length},#{size},#{capacity},#{tags},#{number}
+                                                                                          )
+    </insert>
+
+</mapper>
