@@ -14,4 +14,6 @@ public interface CarDao {
     ArrayList<CarObject> getAllCars();
 
     CarObject getById(int id);
+
+    void replaceCar(CarObject carObject);
 }

@@ -11,4 +11,16 @@
                                                                                           )
     </insert>
 
+    <update id="replaceCar" parameterType="com.bishe.logistics_management.database.dataObject.CarObject">
+            update car set driver=#{driver},phone=#{phone},tags=#{tags},number=#{number} where id=#{id}
+    </update>
+
+    <select id="getAllCars" resultType="com.bishe.logistics_management.database.dataObject.CarObject">
+        select * from car;
+    </select>
+
+    <select id="getById" parameterType="int" resultType="com.bishe.logistics_management.database.dataObject.CarObject">
+        select * from car where id = #{arg0}
+    </select>
+
 </mapper>

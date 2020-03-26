@@ -27,4 +27,6 @@ public class CarService {
     public static CarObject getById(int id){
         return CarService.carDao.getById(id);
     }
+
+    public static void replaceCar(CarObject carObject){CarService.carDao.replaceCar(carObject);}
 }

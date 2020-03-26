@@ -8,11 +8,13 @@ import com.bishe.logistics_management.database.dataObject.UsersObject;
 import com.bishe.logistics_management.database.service.CarService;
 import com.bishe.logistics_management.database.service.CompanyService;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 
 /**
  * 营销页面拦截器
@@ -98,7 +100,7 @@ public class PlanController {
                                     @RequestParam("number") String number){
         ModelAndView mv = new ModelAndView();
         if(CookieUtil.checkLogIn(mv,request)){
-            mv.setViewName("redirect:/addcar");
+            mv.setViewName("redirect:/carlist");
             CarObject carObject = new CarObject();
             carObject.setBrand(brand);
             carObject.setCapacity(size);
@@ -111,6 +113,55 @@ public class PlanController {
             carObject.setTags(tags);
             carObject.setNumber(number);
             CarService.insertCar(carObject);
+        }else{
+            mv.setViewName("redirect:/log");
+        }
+        return mv;
+    }
+
+    @RequestMapping("/replacecar")
+    public ModelAndView addCarCheck(HttpServletRequest request,
+                                    @RequestParam("driver") String driver,
+                                    @RequestParam("phone") String phone,
+                                    @RequestParam("tags") String tags,
+                                    @RequestParam("number") String number,
+                                    @RequestParam("id") int id){
+        ModelAndView mv = new ModelAndView();
+        if(CookieUtil.checkLogIn(mv,request)){
+            mv.setViewName("redirect:/carlist");
+            CarObject carObject = new CarObject();
+            carObject.setId(id);
+            carObject.setDriver(driver);
+            carObject.setPhone(phone);
+            carObject.setTags(tags);
+            carObject.setNumber(number);
+            CarService.replaceCar(carObject);
+        }else{
+            mv.setViewName("redirect:/log");
+        }
+        return mv;
+    }
+
+    @RequestMapping("/carlist")
+    public ModelAndView carlist(HttpServletRequest request){
+        ModelAndView mv = new ModelAndView();
+        if(CookieUtil.checkLogIn(mv,request)){
+            mv.setViewName("carlist");
+            ArrayList<CarObject> carList = CarService.getAllCars();
+            mv.addObject("carList",carList);
+        }else{
+            mv.setViewName("redirect:/log");
+        }
+        return mv;
+    }
+
+    @RequestMapping("/cardetail/{id}")
+    public ModelAndView cardetail(HttpServletRequest request,@PathVariable("id") int id){
+        ModelAndView mv = new ModelAndView();
+        if(CookieUtil.checkLogIn(mv,request)){
+            mv.setViewName("cardetail");
+            CarObject car = CarService.getById(id);
+            mv.addObject("car",car);
         }else{
             mv.setViewName("redirect:/log");
         }
