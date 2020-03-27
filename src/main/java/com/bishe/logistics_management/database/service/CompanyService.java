@@ -5,6 +5,8 @@ import com.bishe.logistics_management.database.dataObject.CompanyObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+
 /**
  * 公司服务类
  * @author 黄伟
@@ -29,4 +31,6 @@ public class CompanyService {
     public static void insertCompany(CompanyObject companyObject){
         companyDao.insertCompany(companyObject);
     }
+
+    public static ArrayList<CompanyObject> getAllCompany(){return companyDao.getAllCompany();}
 }

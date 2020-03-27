@@ -16,18 +16,17 @@
         <legend>新建订单</legend>
     </fieldset>
 
-    <form class="layui-form" action="/addcarcheck" method="post">
+    <form class="layui-form" action="/addordercheck" method="post">
 
         <div class="layui-form-item">
             <div class="layui-inline">
                 <label class="layui-form-label">委托单位</label>
                 <div class="layui-input-inline">
                     <select name="company" lay-verify="required" lay-search="">
-                        <option value="0"> </option>
-                        <option value="1">甲</option>
-                        <option value="2">乙</option>
-                        <option value="3">丙</option>
-                        <option value="4">丁</option>
+                        <option value="0"></option>
+                        <c:forEach var="item" items="${companies}" varStatus="status">
+                        <option value="${item.name}">${item.name}</option>
+                        </c:forEach>
                     </select>
                 </div>
             </div>
@@ -52,19 +51,19 @@
             <div class="layui-inline">
                 <label class="layui-form-label">货物类型</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="type" lay-verify="required" autocomplete="off" class="layui-input" readonly>
+                    <input type="text" name="type" lay-verify="required" autocomplete="off" class="layui-input" >
                 </div>
             </div>
             <div class="layui-inline">
-                <label class="layui-form-label">货物体积</label>
+                <label class="layui-form-label">总立方</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="volume" lay-verify="required" autocomplete="off" class="layui-input" readonly>
+                    <input type="text" name="volume" lay-verify="required" autocomplete="off" class="layui-input" >
                 </div>
             </div>
             <div class="layui-inline">
-                <label class="layui-form-label">货物重量</label>
+                <label class="layui-form-label">重量（吨）</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="weight" lay-verify="required" autocomplete="off" class="layui-input" readonly>
+                    <input type="text" name="weight" lay-verify="required" autocomplete="off" class="layui-input" >
                 </div>
             </div>
         </div>
@@ -73,7 +72,7 @@
             <div class="layui-inline">
                 <label class="layui-form-label">截止日期</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="endtime" id="date" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input" readonly>
+                    <input type="text" name="endtime" id="date" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input" >
                 </div>
             </div>
         </div>
@@ -83,11 +82,9 @@
                 <label class="layui-form-label">计重方式</label>
                 <div class="layui-input-inline">
                     <select name="method" lay-verify="required" lay-search="">
-                        <option value="0"> </option>
-                        <option value="1">甲</option>
-                        <option value="2">乙</option>
-                        <option value="3">丙</option>
-                        <option value="4">丁</option>
+                        <option value="0"></option>
+                        <option value="1">按照立方</option>
+                        <option value="2">按照重量</option>
                     </select>
                 </div>
             </div>
@@ -95,7 +92,7 @@
             <div class="layui-inline">
                 <label class="layui-form-label">单价</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="price" lay-verify="required" autocomplete="off" class="layui-input" readonly>
+                    <input type="text" name="price" lay-verify="required" autocomplete="off" class="layui-input" >
                 </div>
             </div>
         </div>
@@ -104,7 +101,7 @@
             <div class="layui-inline">
                 <label class="layui-form-label">额外描述</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="tags" lay-verify="required" autocomplete="off" class="layui-input" readonly>
+                    <textarea placeholder="请输入内容，最多300字" class="layui-textarea" name="tags" style="width:800px"></textarea>
                 </div>
             </div>
         </div>
@@ -119,8 +116,6 @@
     </form>
 
 </div>
-
-
 <script src="./layui/layui.js" charset="utf-8"></script>
 <!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
 <script>
@@ -139,4 +134,12 @@
     });
 </script>
 
-<%@include file="rear.jsp"%>
+
+<div class="layui-footer">
+    <!-- 底部固定区域 -->
+    鸣谢：LayUI
+</div>
+</div>
+
+</body>
+</html>

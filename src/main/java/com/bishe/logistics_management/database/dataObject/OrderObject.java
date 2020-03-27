@@ -14,6 +14,7 @@ public class OrderObject {
     int method;
     int price;
     int state;
+    int checked;
 
     public int getId() {
         return id;
@@ -43,7 +44,7 @@ public class OrderObject {
         return endPos;
     }
 
-    public void setEnd(String endPos) {
+    public void setEndPos(String endPos) {
         this.endPos = endPos;
     }
 
@@ -117,5 +118,13 @@ public class OrderObject {
 
     public void setState(int state) {
         this.state = state;
+    }
+
+    public int getChecked() {
+        return checked;
+    }
+
+    public void setChecked(int checked) {
+        this.checked = checked;
     }
 }

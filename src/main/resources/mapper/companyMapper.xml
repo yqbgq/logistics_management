@@ -11,4 +11,8 @@
                                                                                               )
     </insert>
 
+    <select id="getAllCompany" resultType="com.bishe.logistics_management.database.dataObject.CompanyObject">
+        select * from company
+    </select>
+
 </mapper>

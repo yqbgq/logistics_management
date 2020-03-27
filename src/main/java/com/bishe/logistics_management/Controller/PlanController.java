@@ -4,9 +4,11 @@ import com.bishe.logistics_management.Utils.CookieUtil;
 import com.bishe.logistics_management.Utils.UserUtil;
 import com.bishe.logistics_management.database.dataObject.CarObject;
 import com.bishe.logistics_management.database.dataObject.CompanyObject;
+import com.bishe.logistics_management.database.dataObject.OrderObject;
 import com.bishe.logistics_management.database.dataObject.UsersObject;
 import com.bishe.logistics_management.database.service.CarService;
 import com.bishe.logistics_management.database.service.CompanyService;
+import com.bishe.logistics_management.database.service.OrderService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -173,7 +175,43 @@ public class PlanController {
         ModelAndView mv = new ModelAndView();
         if(CookieUtil.checkLogIn(mv,request)){
             mv.setViewName("addorder");
+            ArrayList<CompanyObject> companies = CompanyService.getAllCompany();
+            mv.addObject("companies",companies);
+        }else{
+            mv.setViewName("redirect:/log");
+        }
+        return mv;
+    }
 
+    @RequestMapping("/addordercheck")
+    public ModelAndView addOrderCheck(HttpServletRequest request,
+                                      @RequestParam("company") String company,
+                                      @RequestParam("start") String start,
+                                      @RequestParam("end") String end,
+                                      @RequestParam("type") String type,
+                                      @RequestParam("volume") int volume,
+                                      @RequestParam("weight") int weight,
+                                      @RequestParam("endtime") String endtime,
+                                      @RequestParam("method") int method,
+                                      @RequestParam("price") int price,
+                                      @RequestParam("tags") String tags){
+        ModelAndView mv = new ModelAndView();
+        if(CookieUtil.checkLogIn(mv,request)){
+            mv.setViewName("redirect:/addorder");//跳转到订单列表
+            OrderObject orderObject = new OrderObject();
+            orderObject.setCompany(company);
+            orderObject.setStartPos(start);
+            orderObject.setEndPos(end);
+            orderObject.setType(type);
+            orderObject.setVolume(volume);
+            orderObject.setWeight(weight);
+            orderObject.setEndDate(endtime);
+            orderObject.setMethod(method);
+            orderObject.setPrice(price);
+            orderObject.setTags(tags);
+            orderObject.setState(0);//状态为0表示还没有结束该订单
+            orderObject.setChecked(0);//0表示该订单还没有被确认
+            OrderService.insertOrder(orderObject);
         }else{
             mv.setViewName("redirect:/log");
         }
