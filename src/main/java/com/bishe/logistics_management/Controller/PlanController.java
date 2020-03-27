@@ -167,4 +167,16 @@ public class PlanController {
         }
         return mv;
     }
+
+    @RequestMapping("/addorder")
+    public ModelAndView addOrder(HttpServletRequest request){
+        ModelAndView mv = new ModelAndView();
+        if(CookieUtil.checkLogIn(mv,request)){
+            mv.setViewName("addorder");
+
+        }else{
+            mv.setViewName("redirect:/log");
+        }
+        return mv;
+    }
 }

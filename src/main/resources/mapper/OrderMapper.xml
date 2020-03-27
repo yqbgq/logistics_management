@@ -5,32 +5,32 @@
 
 <mapper namespace="com.bishe.logistics_management.database.dao.OrderDao" >
 
-    <insert id="insertOrder" parameterType="com.bishe.logistics_management.database.dataObject.CarObject">
+    <insert id="insertOrder" parameterType="com.bishe.logistics_management.database.dataObject.OrderObject">
         insert into orders(state,company,startpos,endpos,type,opendate,enddate,weight,volume,method,price,tags)
           values (#{state},#{company},#{startPos},#{endPos},#{type},#{openDate},#{endDate},#{weight},#{volume},#{method},#{price},#{tags})
     </insert>
 
-    <select id="getOrderById" parameterType="id" resultType="com.bishe.logistics_management.database.dataObject.CarObject">
+    <select id="getOrderById" parameterType="int" resultType="com.bishe.logistics_management.database.dataObject.OrderObject">
         select * from orders where id = #{arg0}
     </select>
 
-    <select id="getAllOrder" resultType="com.bishe.logistics_management.database.dataObject.CarObject">
+    <select id="getAllOrder" resultType="com.bishe.logistics_management.database.dataObject.OrderObject">
         select * from orders
     </select>
 
-    <select id="getByCompany" parameterType="String" resultType="com.bishe.logistics_management.database.dataObject.CarObject">
+    <select id="getByCompany" parameterType="String" resultType="com.bishe.logistics_management.database.dataObject.OrderObject">
         select * from orders where company  = #{arg0}
     </select>
 
-    <select id="getNoCheck" resultType="com.bishe.logistics_management.database.dataObject.CarObject">
+    <select id="getNoCheck" resultType="com.bishe.logistics_management.database.dataObject.OrderObject">
         select * from orders where state = 0
     </select>
 
-    <select id="getBeforeDate" parameterType="String" resultType="com.bishe.logistics_management.database.dataObject.CarObject">
+    <select id="getBeforeDate" parameterType="String" resultType="com.bishe.logistics_management.database.dataObject.OrderObject">
         select * from orders where #{arg0} > now()
     </select>
 
-    <select id="getCompleted" resultType="com.bishe.logistics_management.database.dataObject.CarObject">
+    <select id="getCompleted" resultType="com.bishe.logistics_management.database.dataObject.OrderObject">
         select * from orders where state = 1
     </select>
 </mapper>
