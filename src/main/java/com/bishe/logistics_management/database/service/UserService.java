@@ -83,5 +83,9 @@ public class UserService {
      */
     public static ArrayList<UsersObject> findAllUserExceptMe(int id){return usersDao.findAllUserExceptMe(id);}
 
+    /**
+     * 重新提交用户信息
+     * @param usersObject 用户数据信息
+     */
     public static void resubmit(UsersObject usersObject){usersDao.resubmit(usersObject);}
 }

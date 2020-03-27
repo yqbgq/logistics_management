@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 /**
  * 和Message有关的Dao层
+ * @author 黄伟
  */
 @Mapper
 @Repository
@@ -19,5 +20,10 @@ public interface MessageDao {
      */
     void insertMessage(MessageObject message);
 
+    /**
+     * 通过ID获取信息
+     * @param id 信息的ID
+     * @return 返回信息列表
+     */
     ArrayList<MessageObject> getMessage(int id);
 }

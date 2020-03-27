@@ -1,5 +1,9 @@
 package com.bishe.logistics_management.database.dataObject;
 
+/**
+ * 车辆信息数据类
+ * @author 黄伟
+ */
 public class CarObject {
     int id;
     String driver;

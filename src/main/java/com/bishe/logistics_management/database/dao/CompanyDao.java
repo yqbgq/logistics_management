@@ -19,5 +19,9 @@ public interface CompanyDao {
      */
     void insertCompany(CompanyObject companyObject);
 
+    /**
+     * 获取所有的公司信息
+     * @return 公司列表
+     */
     ArrayList<CompanyObject> getAllCompany();
 }

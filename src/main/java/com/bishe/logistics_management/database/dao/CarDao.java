@@ -7,15 +7,35 @@ import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 
+/**
+ * 车辆的Dao层
+ * @author 黄伟
+ */
 @Mapper
 @Repository
-@Component("carDao")
 public interface CarDao {
+    /**
+     * 插入车辆数据库
+     * @param carObject 车辆数据类
+     */
     void insertCar(CarObject carObject);
 
+    /**
+     * 获取所有的车辆列表
+     * @return 车辆列表
+     */
     ArrayList<CarObject> getAllCars();
 
+    /**
+     * 通过ID获取车辆信息
+     * @param id 车辆ID
+     * @return 返回车辆数据类
+     */
     CarObject getById(int id);
 
+    /**
+     * 修改车辆信息
+     * @param carObject 车辆数据类
+     */
     void replaceCar(CarObject carObject);
 }

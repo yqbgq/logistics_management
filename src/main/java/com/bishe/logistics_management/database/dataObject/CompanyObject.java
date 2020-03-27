@@ -1,6 +1,6 @@
 package com.bishe.logistics_management.database.dataObject;
 
-import org.apache.ibatis.type.Alias;
+
 
 /**
  * 公司数据类

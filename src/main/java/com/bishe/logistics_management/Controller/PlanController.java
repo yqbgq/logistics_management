@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 
@@ -78,6 +77,11 @@ public class PlanController {
         return mv;
     }
 
+    /**
+     * 页面拦截器，添加车辆信息
+     * @param request 请求类
+     * @return 返回MV
+     */
     @RequestMapping("/addcar")
     public ModelAndView addCar(HttpServletRequest request){
         ModelAndView mv = new ModelAndView();
@@ -89,6 +93,20 @@ public class PlanController {
         return mv;
     }
 
+    /**
+     * 处理addcar提交的信息，插入数据库
+     * @param request 请求类
+     * @param driver 司机信息
+     * @param phone 电话号码
+     * @param brand 车辆品牌
+     * @param type 车辆类型
+     * @param length 车辆长度
+     * @param size 车辆的立方
+     * @param times 车辆出厂时间
+     * @param tags 车辆额外标签信息
+     * @param number 车辆牌照
+     * @return 返回MV
+     */
     @RequestMapping("/addcarcheck")
     public ModelAndView addCarCheck(HttpServletRequest request,
                                     @RequestParam("driver") String driver,
@@ -121,6 +139,16 @@ public class PlanController {
         return mv;
     }
 
+    /**
+     * 修改车辆信息，并且插入数据库
+     * @param request 请求类
+     * @param driver 司机信息
+     * @param phone 电话号码
+     * @param tags 标签信息
+     * @param number 牌照
+     * @param id 车辆ID
+     * @return 返回MV重定向
+     */
     @RequestMapping("/replacecar")
     public ModelAndView addCarCheck(HttpServletRequest request,
                                     @RequestParam("driver") String driver,
@@ -144,6 +172,11 @@ public class PlanController {
         return mv;
     }
 
+    /**
+     * 拦截器，显示车辆的列表
+     * @param request 请求类
+     * @return 返回MV
+     */
     @RequestMapping("/carlist")
     public ModelAndView carlist(HttpServletRequest request){
         ModelAndView mv = new ModelAndView();
@@ -157,6 +190,12 @@ public class PlanController {
         return mv;
     }
 
+    /**
+     * 根据车辆ID，返回车辆的具体信息
+     * @param request 请求类
+     * @param id 车辆ID
+     * @return 返回重定向ID
+     */
     @RequestMapping("/cardetail/{id}")
     public ModelAndView cardetail(HttpServletRequest request,@PathVariable("id") int id){
         ModelAndView mv = new ModelAndView();
@@ -170,6 +209,11 @@ public class PlanController {
         return mv;
     }
 
+    /**
+     * 添加订单，并且插入数据库
+     * @param request 请求类
+     * @return 返回MV重定向
+     */
     @RequestMapping("/addorder")
     public ModelAndView addOrder(HttpServletRequest request){
         ModelAndView mv = new ModelAndView();
@@ -183,6 +227,21 @@ public class PlanController {
         return mv;
     }
 
+    /**
+     * 处理添加订单页面提交的信息，插入数据库
+     * @param request 请求类
+     * @param company 公司
+     * @param start 出发地点
+     * @param end 目的地点
+     * @param type 货物类别
+     * @param volume 货物体积
+     * @param weight 货物重量
+     * @param endtime 订单截止时间
+     * @param method 计价方法
+     * @param price 单位价格
+     * @param tags 额外标签信息
+     * @return 返回MV重定向
+     */
     @RequestMapping("/addordercheck")
     public ModelAndView addOrderCheck(HttpServletRequest request,
                                       @RequestParam("company") String company,
@@ -218,6 +277,11 @@ public class PlanController {
         return mv;
     }
 
+    /**
+     * 订单列表
+     * @param request 请求类
+     * @return 返回MV重定向
+     */
     @RequestMapping("orderlist")
     public ModelAndView orderList(HttpServletRequest request){
         ModelAndView mv = new ModelAndView();

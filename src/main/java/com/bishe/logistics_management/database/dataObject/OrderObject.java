@@ -1,5 +1,9 @@
 package com.bishe.logistics_management.database.dataObject;
 
+/**
+ * 订单类数据信息类
+ * @author 黄伟
+ */
 public class OrderObject {
     int id;
     String company;
@@ -16,6 +20,7 @@ public class OrderObject {
     int state;
     int checked;
 
+    //Getter() and Setter()
     public int getId() {
         return id;
     }
@@ -127,4 +132,5 @@ public class OrderObject {
     public void setChecked(int checked) {
         this.checked = checked;
     }
+    //Getter() and Setter()
 }

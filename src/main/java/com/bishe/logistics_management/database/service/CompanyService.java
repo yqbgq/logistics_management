@@ -32,5 +32,9 @@ public class CompanyService {
         companyDao.insertCompany(companyObject);
     }
 
+    /**
+     * 获取所有的公司列表
+     * @return 公司列表
+     */
     public static ArrayList<CompanyObject> getAllCompany(){return companyDao.getAllCompany();}
 }
