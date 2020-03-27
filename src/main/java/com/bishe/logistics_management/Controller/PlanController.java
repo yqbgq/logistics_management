@@ -217,4 +217,17 @@ public class PlanController {
         }
         return mv;
     }
+
+    @RequestMapping("orderlist")
+    public ModelAndView orderList(HttpServletRequest request){
+        ModelAndView mv = new ModelAndView();
+        if(CookieUtil.checkLogIn(mv,request)){
+            mv.setViewName("orderlist");
+            ArrayList<OrderObject> orders = OrderService.getAllOrder();
+            mv.addObject("orders",orders);
+        }else{
+            mv.setViewName("redirect:/log");
+        }
+        return mv;
+    }
 }
