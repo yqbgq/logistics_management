@@ -55,4 +55,6 @@ public interface OrderDao {
      * @return 订单列表
      */
     ArrayList<OrderObject> getCompleted();
+
+    void approveId(int id);
 }

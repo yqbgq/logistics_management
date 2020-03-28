@@ -33,4 +33,8 @@
     <select id="getCompleted" resultType="com.bishe.logistics_management.database.dataObject.OrderObject">
         select * from orders where state = 1
     </select>
+
+    <update id="approveId" parameterType="int">
+        update orders set checked=1 where id = #{arg0}
+    </update>
 </mapper>

@@ -294,4 +294,38 @@ public class PlanController {
         }
         return mv;
     }
+
+    @RequestMapping("ordercheck/{id}")
+    public ModelAndView orderCheck(HttpServletRequest request,@PathVariable("id") int id){
+        ModelAndView mv = new ModelAndView();
+        if(CookieUtil.checkLogIn(mv,request)){
+            mv.setViewName("ordercheck");
+            OrderObject orderObject = OrderService.getOrderById(id);
+            mv.addObject("order",orderObject);
+            if(orderObject.getMethod()==1){
+                mv.addObject("method","按立方计数");
+            }else{
+                mv.addObject("method","按重量计数");
+            }
+        }else{
+            mv.setViewName("redirect:/log");
+        }
+        return mv;
+    }
+
+    @RequestMapping("orderchecks")
+    public ModelAndView orderchecks(HttpServletRequest request,
+                                    @RequestParam("id") int id,
+                                    @RequestParam("approve") String approve){
+        ModelAndView mv = new ModelAndView();
+        if(CookieUtil.checkLogIn(mv,request)){
+            mv.setViewName("redirect:/orderlist");
+            if(approve.equals("on")){
+                OrderService.approveId(id);
+            }
+        }else{
+            mv.setViewName("redirect:/log");
+        }
+        return mv;
+    }
 }

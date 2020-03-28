@@ -82,4 +82,6 @@ public class OrderService {
     public static ArrayList<OrderObject> getCompleted(){
         return OrderService.orderDao.getCompleted();
     }
+
+    public static void approveId(int id){OrderService.orderDao.approveId(id);}
 }
