@@ -56,5 +56,16 @@ public interface OrderDao {
      */
     ArrayList<OrderObject> getCompleted();
 
+    /**
+     * 将订单审核通过，按照ID
+     * @param id ID
+     */
     void approveId(int id);
+
+    /**
+     * 获取已经审核通过但是还没有安排的订单
+     * @param id ID
+     * @return 返回符合要求的orderObject
+     */
+    OrderObject getNeedManage(int id);
 }

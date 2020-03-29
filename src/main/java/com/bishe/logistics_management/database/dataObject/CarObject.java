@@ -5,17 +5,21 @@ package com.bishe.logistics_management.database.dataObject;
  * @author 黄伟
  */
 public class CarObject {
-    int id;
-    String driver;
-    String phone;
-    String type;
-    String brand;
-    String times;
-    int length;
-    int size;
-    int capacity;
-    String tags;
-    String number;
+    private int id;
+    private int state;
+    private String driver;
+    private String phone;
+    private String type;
+    private String brand;
+    private String times;
+    private int length;
+    private int size;
+    private int capacity;
+    private String tags;
+    private String number;
+    private String target;
+    private String current;
+    private String awaydate;
 
     //Getter()  and Setter()
     public int getId() {
@@ -104,6 +108,38 @@ public class CarObject {
 
     public void setNumber(String number) {
         this.number = number;
+    }
+
+    public int getState() {
+        return state;
+    }
+
+    public void setState(int state) {
+        this.state = state;
+    }
+
+    public String getTarget() {
+        return target;
+    }
+
+    public void setTarget(String target) {
+        this.target = target;
+    }
+
+    public String getCurrent() {
+        return current;
+    }
+
+    public void setCurrent(String current) {
+        this.current = current;
+    }
+
+    public String getAwaydate() {
+        return awaydate;
+    }
+
+    public void setAwaydate(String awaydate) {
+        this.awaydate = awaydate;
     }
 
     //Getter()  and Setter()

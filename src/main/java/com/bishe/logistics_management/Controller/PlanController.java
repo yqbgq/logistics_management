@@ -77,6 +77,7 @@ public class PlanController {
         return mv;
     }
 
+    //todo 新增车辆的时候，要增加车辆位置，车辆在港状态以及车辆目的地等信息
     /**
      * 页面拦截器，添加车辆信息
      * @param request 请求类
@@ -322,6 +323,25 @@ public class PlanController {
             mv.setViewName("redirect:/orderlist");
             if(approve.equals("on")){
                 OrderService.approveId(id);
+            }
+        }else{
+            mv.setViewName("redirect:/log");
+        }
+        return mv;
+    }
+
+    //todo 返回的orderObject为空时要重定向到列表
+    @RequestMapping("manageplan/{id}")
+    public ModelAndView managePlan(HttpServletRequest request,@PathVariable("id") int id){
+        ModelAndView mv = new ModelAndView();
+        if(CookieUtil.checkLogIn(mv,request)){
+            mv.setViewName("manageplan");
+            OrderObject orderObject = OrderService.getNeedManage(id);
+            mv.addObject("order",orderObject);
+            if(orderObject.getMethod()==1){
+                mv.addObject("method","按立方计数");
+            }else{
+                mv.addObject("method","按重量计数");
             }
         }else{
             mv.setViewName("redirect:/log");

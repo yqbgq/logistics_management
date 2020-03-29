@@ -83,5 +83,16 @@ public class OrderService {
         return OrderService.orderDao.getCompleted();
     }
 
+    /**
+     * 审核通过ID指定的订单
+     * @param id ID
+     */
     public static void approveId(int id){OrderService.orderDao.approveId(id);}
+
+    /**
+     * 获得已经审核通过，但是还没有安排的订单
+     * @param id ID
+     * @return 返回订单类
+     */
+    public static OrderObject getNeedManage(int id){return OrderService.orderDao.getNeedManage(id);}
 }

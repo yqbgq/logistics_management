@@ -37,4 +37,8 @@
     <update id="approveId" parameterType="int">
         update orders set checked=1 where id = #{arg0}
     </update>
+
+    <select id="getNeedManage" parameterType="int">
+        select * from orders where checked=1 and state=0
+    </select>
 </mapper>
