@@ -38,4 +38,6 @@ public interface CarDao {
      * @param carObject 车辆数据类
      */
     void replaceCar(CarObject carObject);
+
+    ArrayList<CarObject> getEmptyCar(String current,String awaydate);
 }

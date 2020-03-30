@@ -38,7 +38,7 @@
         update orders set checked=1 where id = #{arg0}
     </update>
 
-    <select id="getNeedManage" parameterType="int">
+    <select id="getNeedManage" parameterType="int" resultType="com.bishe.logistics_management.database.dataObject.OrderObject">
         select * from orders where checked=1 and state=0
     </select>
 </mapper>

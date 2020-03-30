@@ -114,30 +114,42 @@
 
     <table class="layui-table" lay-even="" lay-skin="row" >
         <colgroup>
+            <col width="80">
+            <col width="150">
+            <col width="100">
+            <col width="120">
             <col width="150">
             <col width="150">
+            <col width="170">
             <col width="150">
-            <col width="150">
-            <col width="200">
+            <col width="100">
             <col>
         </colgroup>
         <thead>
         <tr>
-            <th style="text-align:center;margin:auto">车辆编号</th>
+            <th style="text-align:center;margin:auto">编号</th>
             <th style="text-align:center;margin:auto">车辆牌照</th>
+            <th style="text-align:center;margin:auto">车辆类型</th>
+            <th style="text-align:center;margin:auto">车长（米）</th>
             <th style="text-align:center;margin:auto">司机</th>
             <th style="text-align:center;margin:auto">联系电话</th>
-            <th style="text-align:center;margin:auto">详细</th>
+            <th style="text-align:center;margin:auto">剩余空间（立方）</th>
+            <th style="text-align:center;margin:auto">离港日期</th>
+            <th style="text-align:center;margin:auto">选择</th>
         </tr>
         </thead>
         <tbody>
-        <c:forEach var="item" items="${carList}" varStatus="status">
+        <c:forEach var="item" items="${cars}" varStatus="status">
             <tr>
-                <td>${item.id}</td>
-                <td>${item.number}</td>
-                <td>${item.driver}</td>
-                <td>${item.phone}</td>
-                <td><button type="button" class="layui-btn" onclick="window.location.href = '/cardetail/${item.id}'"><i class="layui-icon">查看详情</i></button></td>
+                <td style="text-align:center;margin:auto">${item.id}</td>
+                <td style="text-align:center;margin:auto">${item.number}</td>
+                <td style="text-align:center;margin:auto">${item.type}</td>
+                <td style="text-align:center;margin:auto">${item.length}</td>
+                <td style="text-align:center;margin:auto">${item.driver}</td>
+                <td style="text-align:center;margin:auto">${item.phone}</td>
+                <td style="text-align:center;margin:auto">${item.size}</td>
+                <td style="text-align:center;margin:auto">${item.awaydate}</td>
+                <td style="text-align:center;margin:auto"><button type="button" class="layui-btn" onclick="window.location.href = '/associateorder/${item.id}'"><i class="layui-icon">安排</i></button></td>
             </tr>
         </c:forEach>
         </tbody>

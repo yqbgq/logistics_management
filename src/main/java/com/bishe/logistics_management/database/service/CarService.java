@@ -53,4 +53,8 @@ public class CarService {
      * @param carObject 车辆数据类
      */
     public static void replaceCar(CarObject carObject){CarService.carDao.replaceCar(carObject);}
+
+    public static ArrayList<CarObject> getEmptyCar(String current,String awaydate){
+        return CarService.carDao.getEmptyCar(current,awaydate);
+    }
 }

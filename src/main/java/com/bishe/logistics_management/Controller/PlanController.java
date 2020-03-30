@@ -337,6 +337,12 @@ public class PlanController {
         if(CookieUtil.checkLogIn(mv,request)){
             mv.setViewName("manageplan");
             OrderObject orderObject = OrderService.getNeedManage(id);
+            ArrayList<CarObject> cars = CarService.getEmptyCar(orderObject.getStartPos(),orderObject.getEndDate());
+            for(CarObject o : cars){
+                if(o.getSize() <= orderObject.getVolume())cars.remove(o);
+                if(o.getAwaydate().equals("0000-00-00"))o.setAwaydate("尚未安排");
+            }
+            mv.addObject("cars",cars);
             mv.addObject("order",orderObject);
             if(orderObject.getMethod()==1){
                 mv.addObject("method","按立方计数");
