@@ -96,5 +96,9 @@ public class OrderService {
      */
     public static OrderObject getNeedManage(int id){return OrderService.orderDao.getNeedManage(id);}
 
+    /**
+     * 修改订单的状态，state为1
+     * @param id 订单ID
+     */
     public static void manageId(int id){OrderService.orderDao.manageId(id);}
 }

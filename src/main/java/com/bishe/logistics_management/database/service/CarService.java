@@ -54,11 +54,26 @@ public class CarService {
      */
     public static void replaceCar(CarObject carObject){CarService.carDao.replaceCar(carObject);}
 
+    /**
+     * 获取符合要求的空车
+     * @param current 当前车辆位置
+     * @param awaydate 车辆离港日期
+     * @return 返回车辆列表
+     */
     public static ArrayList<CarObject> getEmptyCar(String current,String awaydate){
         return CarService.carDao.getEmptyCar(current,awaydate);
     }
 
+    /**
+     * 修改车辆的剩余载荷空闲
+     * @param id 车辆ID
+     * @param size 车辆剩余载荷
+     */
     public static void subSize(int id,int size){CarService.carDao.subSize(id,size);}
 
+    /**
+     * 修改车辆的离港时间
+     * @param carObject 车辆数据类
+     */
     public static void updateAway(CarObject carObject){CarService.carDao.updateAway(carObject);}
 }

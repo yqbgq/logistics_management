@@ -63,5 +63,9 @@ public interface UsersDao {
      */
     ArrayList<UsersObject> findAllUserExceptMe(int id);
 
+    /**
+     * 修改用户信息，修改用户数据表
+     * @param usersObject 用户表
+     */
     void resubmit(UsersObject usersObject);
 }

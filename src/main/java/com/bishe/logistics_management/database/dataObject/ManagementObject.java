@@ -1,5 +1,9 @@
 package com.bishe.logistics_management.database.dataObject;
 
+/**
+ * Management的数据类
+ * @author 黄伟
+ */
 public class ManagementObject {
     int id;
     int orderid;

@@ -291,6 +291,12 @@ public class PlanController {
         return mv;
     }
 
+    /**
+     * 确认订单信息，审核
+     * @param request 请求类
+     * @param id 订单ID
+     * @return 返回MV
+     */
     @RequestMapping("ordercheck/{id}")
     public ModelAndView orderCheck(HttpServletRequest request,@PathVariable("id") int id){
         ModelAndView mv = new ModelAndView();
@@ -309,6 +315,13 @@ public class PlanController {
         return mv;
     }
 
+    /**
+     * 检验订单审核的信息，并且插入数据库
+     * @param request 请求类
+     * @param id 订单ID
+     * @param approve 是否请求通过
+     * @return 返回MV
+     */
     @RequestMapping("orderchecks")
     public ModelAndView orderchecks(HttpServletRequest request,
                                     @RequestParam("id") int id,
@@ -325,6 +338,12 @@ public class PlanController {
         return mv;
     }
 
+    /**
+     * 展示订单信息并且列出可以安排的车辆表，车辆表中修改部分信息
+     * @param request 请求类
+     * @param id 订单ID
+     * @return 返回MV
+     */
     //todo 返回的orderObject为空时要重定向到列表
     @RequestMapping("manageplan/{id}")
     public ModelAndView managePlan(HttpServletRequest request,@PathVariable("id") int id){
@@ -354,6 +373,14 @@ public class PlanController {
         return mv;
     }
 
+    /**
+     * 关联订单和运力，建立Management类并插入数据库，修改订单状态state，修改车辆的离港信息以及车辆的剩余载货能力
+     * @param request 请求类
+     * @param orderid 订单ID
+     * @param carid 车辆ID
+     * @param date 预定离港信息
+     * @return 返回MV
+     */
     @RequestMapping("associateorder/{orderid}/{carid}")
     public ModelAndView associateOrder(HttpServletRequest request,
                                        @PathVariable("orderid") int orderid,

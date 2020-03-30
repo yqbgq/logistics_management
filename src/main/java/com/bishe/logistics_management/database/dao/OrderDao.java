@@ -69,5 +69,9 @@ public interface OrderDao {
      */
     OrderObject getNeedManage(int id);
 
+    /**
+     * 修改数据表信息，修改订单状态state为1
+     * @param id 订单ID
+     */
     void manageId(int id);
 }
