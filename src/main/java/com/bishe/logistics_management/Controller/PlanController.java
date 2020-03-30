@@ -2,13 +2,8 @@ package com.bishe.logistics_management.Controller;
 
 import com.bishe.logistics_management.Utils.CookieUtil;
 import com.bishe.logistics_management.Utils.UserUtil;
-import com.bishe.logistics_management.database.dataObject.CarObject;
-import com.bishe.logistics_management.database.dataObject.CompanyObject;
-import com.bishe.logistics_management.database.dataObject.OrderObject;
-import com.bishe.logistics_management.database.dataObject.UsersObject;
-import com.bishe.logistics_management.database.service.CarService;
-import com.bishe.logistics_management.database.service.CompanyService;
-import com.bishe.logistics_management.database.service.OrderService;
+import com.bishe.logistics_management.database.dataObject.*;
+import com.bishe.logistics_management.database.service.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -337,6 +332,10 @@ public class PlanController {
         if(CookieUtil.checkLogIn(mv,request)){
             mv.setViewName("manageplan");
             OrderObject orderObject = OrderService.getNeedManage(id);
+            if(orderObject==null){
+                mv.setViewName("redirect:/orderlist");
+                return mv;
+            }
             ArrayList<CarObject> cars = CarService.getEmptyCar(orderObject.getStartPos(),orderObject.getEndDate());
             for(CarObject o : cars){
                 if(o.getSize() <= orderObject.getVolume())cars.remove(o);
@@ -349,6 +348,33 @@ public class PlanController {
             }else{
                 mv.addObject("method","按重量计数");
             }
+        }else{
+            mv.setViewName("redirect:/log");
+        }
+        return mv;
+    }
+
+    @RequestMapping("associateorder/{orderid}/{carid}")
+    public ModelAndView associateOrder(HttpServletRequest request,
+                                       @PathVariable("orderid") int orderid,
+                                       @PathVariable("carid") int carid,
+                                       @RequestParam("dates") String date){
+        ModelAndView mv = new ModelAndView();
+        if(CookieUtil.checkLogIn(mv,request)){
+            mv.setViewName("redirect:/orderlist");
+            OrderService.manageId(orderid);
+            CarObject car = CarService.getById(carid);
+            OrderObject order = OrderService.getOrderById(orderid);
+            CarService.subSize(carid,car.getSize()-order.getVolume());
+            car.setAwaydate(date);
+            CarService.updateAway(car);
+            ManagementObject managementObject = new ManagementObject();
+            managementObject.setAway(date);
+            managementObject.setCarid(carid);
+            managementObject.setOrderid(orderid);
+            managementObject.setManageuser(UserUtil.getUser(request).getName());
+            managementObject.setPlanuser(UserService.getUser(order.getPlanuser()).getName());
+            ManagementService.insertManagement(managementObject);
         }else{
             mv.setViewName("redirect:/log");
         }

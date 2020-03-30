@@ -6,8 +6,8 @@
 <mapper namespace="com.bishe.logistics_management.database.dao.OrderDao" >
 
     <insert id="insertOrder" parameterType="com.bishe.logistics_management.database.dataObject.OrderObject">
-        insert into orders(state,company,startpos,endpos,type,opendate,enddate,weight,volume,method,price,tags,checked)
-          values (#{state},#{company},#{startPos},#{endPos},#{type},now(),#{endDate},#{weight},#{volume},#{method},#{price},#{tags},#{checked})
+        insert into orders(state,company,startpos,endpos,type,opendate,enddate,weight,volume,method,price,tags,checked,planuser)
+          values (#{state},#{company},#{startPos},#{endPos},#{type},now(),#{endDate},#{weight},#{volume},#{method},#{price},#{tags},#{checked},#{planuser})
     </insert>
 
     <select id="getOrderById" parameterType="int" resultType="com.bishe.logistics_management.database.dataObject.OrderObject">
@@ -41,4 +41,8 @@
     <select id="getNeedManage" parameterType="int" resultType="com.bishe.logistics_management.database.dataObject.OrderObject">
         select * from orders where checked=1 and state=0
     </select>
+
+    <update id="manageId" parameterType="int">
+        update orders set state=1 where id = #{arg0}
+    </update>
 </mapper>

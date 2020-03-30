@@ -6,6 +6,7 @@ package com.bishe.logistics_management.database.dataObject;
  */
 public class OrderObject {
     int id;
+    int planuser;
     String company;
     String startPos;
     String endPos;
@@ -27,6 +28,14 @@ public class OrderObject {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getPlanuser() {
+        return planuser;
+    }
+
+    public void setPlanuser(int planuser) {
+        this.planuser = planuser;
     }
 
     public String getCompany() {

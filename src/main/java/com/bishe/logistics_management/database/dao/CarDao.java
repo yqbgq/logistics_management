@@ -40,4 +40,8 @@ public interface CarDao {
     void replaceCar(CarObject carObject);
 
     ArrayList<CarObject> getEmptyCar(String current,String awaydate);
+
+    void subSize(int id,int size);
+
+    void updateAway(CarObject carObject);
 }

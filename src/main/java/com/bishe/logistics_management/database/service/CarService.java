@@ -57,4 +57,8 @@ public class CarService {
     public static ArrayList<CarObject> getEmptyCar(String current,String awaydate){
         return CarService.carDao.getEmptyCar(current,awaydate);
     }
+
+    public static void subSize(int id,int size){CarService.carDao.subSize(id,size);}
+
+    public static void updateAway(CarObject carObject){CarService.carDao.updateAway(carObject);}
 }

@@ -68,4 +68,6 @@ public interface OrderDao {
      * @return 返回符合要求的orderObject
      */
     OrderObject getNeedManage(int id);
+
+    void manageId(int id);
 }

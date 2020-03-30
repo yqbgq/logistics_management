@@ -30,6 +30,12 @@
         where (awaydate = '0000-00-00' ) or (#{arg1}>=awaydate)
     </select>
 
+    <update id="subSize" parameterType="int">
+        update car set size=#{arg1} where id = #{arg0}
+    </update>
 
+    <update id="updateAway" parameterType="com.bishe.logistics_management.database.dataObject.CarObject">
+        update car set awaydate = #{awaydate} where id = #{id}
+    </update>
 
 </mapper>

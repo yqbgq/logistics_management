@@ -95,4 +95,6 @@ public class OrderService {
      * @return 返回订单类
      */
     public static OrderObject getNeedManage(int id){return OrderService.orderDao.getNeedManage(id);}
+
+    public static void manageId(int id){OrderService.orderDao.manageId(id);}
 }

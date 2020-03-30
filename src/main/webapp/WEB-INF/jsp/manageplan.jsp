@@ -7,7 +7,7 @@
         <legend>订单详情</legend>
     </fieldset>
 
-    <form class="layui-form" action="/orderchecks" method="post">
+    <form class="layui-form" >
 
         <div class="layui-form-item">
             <div class="layui-inline">
@@ -114,20 +114,18 @@
 
     <table class="layui-table" lay-even="" lay-skin="row" >
         <colgroup>
-            <col width="80">
             <col width="150">
             <col width="100">
             <col width="120">
+            <col width="120">
             <col width="150">
-            <col width="150">
-            <col width="170">
-            <col width="150">
+            <col width="120">
             <col width="100">
-            <col>
+            <col width="230">
+            <col width="100">
         </colgroup>
         <thead>
         <tr>
-            <th style="text-align:center;margin:auto">编号</th>
             <th style="text-align:center;margin:auto">车辆牌照</th>
             <th style="text-align:center;margin:auto">车辆类型</th>
             <th style="text-align:center;margin:auto">车长（米）</th>
@@ -135,13 +133,13 @@
             <th style="text-align:center;margin:auto">联系电话</th>
             <th style="text-align:center;margin:auto">剩余空间（立方）</th>
             <th style="text-align:center;margin:auto">离港日期</th>
+            <th style="text-align:center;margin:auto">安排日期</th>
             <th style="text-align:center;margin:auto">选择</th>
         </tr>
         </thead>
         <tbody>
         <c:forEach var="item" items="${cars}" varStatus="status">
             <tr>
-                <td style="text-align:center;margin:auto">${item.id}</td>
                 <td style="text-align:center;margin:auto">${item.number}</td>
                 <td style="text-align:center;margin:auto">${item.type}</td>
                 <td style="text-align:center;margin:auto">${item.length}</td>
@@ -149,7 +147,10 @@
                 <td style="text-align:center;margin:auto">${item.phone}</td>
                 <td style="text-align:center;margin:auto">${item.size}</td>
                 <td style="text-align:center;margin:auto">${item.awaydate}</td>
-                <td style="text-align:center;margin:auto"><button type="button" class="layui-btn" onclick="window.location.href = '/associateorder/${item.id}'"><i class="layui-icon">安排</i></button></td>
+                <form action="/associateorder/${order.id}/${item.id}" method="post">
+                    <td style="text-align:center;margin:auto"><input type="text" name="dates" id="date" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input" ></td>
+                    <td style="text-align:center;margin:auto"><button type="submit" class="layui-btn" lay-submit="" lay-filter="demo1">安排</button></td>
+                </form>
             </tr>
         </c:forEach>
         </tbody>
@@ -157,4 +158,19 @@
 
 </div>
 <script src="../layui/layui.all.js" charset="utf-8"></script>
+<script>
+    layui.use(['form', 'layedit', 'laydate'], function(){
+        var form = layui.form
+            ,layer = layui.layer
+            ,layedit = layui.layedit
+            ,laydate = layui.laydate;
+        //日期
+        laydate.render({
+            elem: '#date'
+        });
+        laydate.render({
+            elem: '#date1'
+        });
+    });
+</script>
 <%@include file="rear.jsp"%>
