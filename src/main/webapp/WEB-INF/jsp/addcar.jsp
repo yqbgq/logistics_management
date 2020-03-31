@@ -75,6 +75,15 @@
             </div>
         </div>
 
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">当前位置</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="current" lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+        </div>
+
         <div class="layui-form-item layui-form-text">
             <label class="layui-form-label">车辆标签</label>
             <div class="layui-input-block">

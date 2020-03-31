@@ -72,7 +72,7 @@ public class PlanController {
         return mv;
     }
 
-    //todo 新增车辆的时候，要增加车辆位置，车辆在港状态以及车辆目的地等信息
+
     /**
      * 页面拦截器，添加车辆信息
      * @param request 请求类
@@ -113,7 +113,8 @@ public class PlanController {
                                     @RequestParam("size") int size,
                                     @RequestParam("times") String times,
                                     @RequestParam("tags") String tags,
-                                    @RequestParam("number") String number){
+                                    @RequestParam("number") String number,
+                                    @RequestParam("current") String current){
         ModelAndView mv = new ModelAndView();
         if(CookieUtil.checkLogIn(mv,request)){
             mv.setViewName("redirect:/carlist");
@@ -128,6 +129,8 @@ public class PlanController {
             carObject.setTimes(times);
             carObject.setTags(tags);
             carObject.setNumber(number);
+            carObject.setCurrent(current);
+            carObject.setState(0);
             CarService.insertCar(carObject);
         }else{
             mv.setViewName("redirect:/log");
@@ -344,7 +347,6 @@ public class PlanController {
      * @param id 订单ID
      * @return 返回MV
      */
-    //todo 返回的orderObject为空时要重定向到列表
     @RequestMapping("manageplan/{id}")
     public ModelAndView managePlan(HttpServletRequest request,@PathVariable("id") int id){
         ModelAndView mv = new ModelAndView();
@@ -408,6 +410,11 @@ public class PlanController {
         return mv;
     }
 
+    /**
+     * 展示待安排运力的订单的列表
+     * @param request 请求类
+     * @return 返回MV
+     */
     @RequestMapping("managelist")
     public ModelAndView manageList(HttpServletRequest request){
         ModelAndView mv = new ModelAndView();

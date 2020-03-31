@@ -6,8 +6,8 @@
 <mapper namespace="com.bishe.logistics_management.database.dao.CarDao" >
 
     <insert id="insertCar" parameterType="com.bishe.logistics_management.database.dataObject.CarObject">
-        insert into car(driver,phone,type,brand,times,length,size,capacity,tags,number) values(
-                       #{driver},#{phone},#{type},#{brand},#{times},#{length},#{size},#{capacity},#{tags},#{number}
+        insert into car(driver,phone,type,brand,times,length,size,capacity,tags,number,current,state) values(
+                       #{driver},#{phone},#{type},#{brand},#{times},#{length},#{size},#{capacity},#{tags},#{number},#{current},0
                                                                                           )
     </insert>
 

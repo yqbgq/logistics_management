@@ -16,7 +16,6 @@ import javax.servlet.http.HttpServletRequest;
  *该控制类用于拦截有关用户审核页面的请求
  * @author 黄伟
  */
-//todo 需要注意，还需要添加权限审核
 @Controller
 public class ApproveController {
 
@@ -60,7 +59,6 @@ public class ApproveController {
                               @RequestParam("plan") int plan,
                               @RequestParam("affairs") int affairs,
                               HttpServletRequest request){
-        //todo 在这里需要添加对用户审核时的数据库操作
         ModelAndView mv = new ModelAndView();
         if(CookieUtil.checkLogIn(mv,request)) {
             if(approve.equals("on")){
