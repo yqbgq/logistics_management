@@ -350,15 +350,15 @@ public class PlanController {
         ModelAndView mv = new ModelAndView();
         if(CookieUtil.checkLogIn(mv,request)){
             mv.setViewName("manageplan");
-            OrderObject orderObject = OrderService.getNeedManage(id);
+            OrderObject orderObject = OrderService.getOrderById(id);
             if(orderObject==null){
                 mv.setViewName("redirect:/orderlist");
                 return mv;
             }
             ArrayList<CarObject> cars = CarService.getEmptyCar(orderObject.getStartPos(),orderObject.getEndDate());
-            for(CarObject o : cars){
-                if(o.getSize() <= orderObject.getVolume())cars.remove(o);
-                if(o.getAwaydate().equals("0000-00-00"))o.setAwaydate("尚未安排");
+            for(int i=0;i<cars.size();i++){
+                if(cars.get(i).getSize() <= orderObject.getVolume())cars.get(i).setId(-1);
+                if(cars.get(i).getAwaydate().equals("000-00-00"))cars.get(i).setAwaydate("尚未安排");
             }
             mv.addObject("cars",cars);
             mv.addObject("order",orderObject);
@@ -402,6 +402,19 @@ public class PlanController {
             managementObject.setManageuser(UserUtil.getUser(request).getName());
             managementObject.setPlanuser(UserService.getUser(order.getPlanuser()).getName());
             ManagementService.insertManagement(managementObject);
+        }else{
+            mv.setViewName("redirect:/log");
+        }
+        return mv;
+    }
+
+    @RequestMapping("managelist")
+    public ModelAndView manageList(HttpServletRequest request){
+        ModelAndView mv = new ModelAndView();
+        if(CookieUtil.checkLogIn(mv,request)){
+            mv.setViewName("managelist");
+            ArrayList<OrderObject> orders = OrderService.getNeedManage();
+            mv.addObject("orders",orders);
         }else{
             mv.setViewName("redirect:/log");
         }

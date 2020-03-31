@@ -139,19 +139,21 @@
         </thead>
         <tbody>
         <c:forEach var="item" items="${cars}" varStatus="status">
-            <tr>
-                <td style="text-align:center;margin:auto">${item.number}</td>
-                <td style="text-align:center;margin:auto">${item.type}</td>
-                <td style="text-align:center;margin:auto">${item.length}</td>
-                <td style="text-align:center;margin:auto">${item.driver}</td>
-                <td style="text-align:center;margin:auto">${item.phone}</td>
-                <td style="text-align:center;margin:auto">${item.size}</td>
-                <td style="text-align:center;margin:auto">${item.awaydate}</td>
-                <form action="/associateorder/${order.id}/${item.id}" method="post">
-                    <td style="text-align:center;margin:auto"><input type="text" name="dates" id="date" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input" ></td>
-                    <td style="text-align:center;margin:auto"><button type="submit" class="layui-btn" lay-submit="" lay-filter="demo1">安排</button></td>
-                </form>
-            </tr>
+            <c:if test="${item.id!=-1}">
+                <tr>
+                    <td style="text-align:center;margin:auto">${item.number}</td>
+                    <td style="text-align:center;margin:auto">${item.type}</td>
+                    <td style="text-align:center;margin:auto">${item.length}</td>
+                    <td style="text-align:center;margin:auto">${item.driver}</td>
+                    <td style="text-align:center;margin:auto">${item.phone}</td>
+                    <td style="text-align:center;margin:auto">${item.size}</td>
+                    <td style="text-align:center;margin:auto">${item.awaydate}</td>
+                    <form action="/associateorder/${order.id}/${item.id}" method="post">
+                        <td style="text-align:center;margin:auto"><input type="text" name="dates" id="date" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input" ></td>
+                        <td style="text-align:center;margin:auto"><button type="submit" class="layui-btn" lay-submit="" lay-filter="demo1">安排</button></td>
+                    </form>
+                </tr>
+            </c:if>
         </c:forEach>
         </tbody>
     </table>

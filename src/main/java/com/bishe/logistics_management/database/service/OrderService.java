@@ -91,10 +91,9 @@ public class OrderService {
 
     /**
      * 获得已经审核通过，但是还没有安排的订单
-     * @param id ID
      * @return 返回订单类
      */
-    public static OrderObject getNeedManage(int id){return OrderService.orderDao.getNeedManage(id);}
+    public static ArrayList<OrderObject> getNeedManage(){return OrderService.orderDao.getNeedManage();}
 
     /**
      * 修改订单的状态，state为1

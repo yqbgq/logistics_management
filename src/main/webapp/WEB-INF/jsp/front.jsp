@@ -53,6 +53,9 @@
                     <dl class="layui-nav-child">
                         <c:if test="${permission.orders==2}"><dd><a href="https://www.baidu.com">员工操作</a></dd></c:if>
                         <c:if test="${permission.orders==1}"><dd><a href="https://www.baidu.com">主管操作</a></dd></c:if>
+                        <dd><a href="/addcompany">增加货源</a></dd>
+                        <dd><a href="/addorder">新增订单</a></dd>
+                        <dd><a href="/orderlist">订单列表</a></dd>
                     </dl>
                 </li>
                 </c:if>
@@ -62,6 +65,10 @@
                     <dl class="layui-nav-child">
                         <c:if test="${permission.plan == 2}" ><dd><a href="https://www.baidu.com">员工操作</a></dd></c:if>
                         <c:if test="${permission.plan==1}" ><dd><a href="javascript:;">主管操作</a></dd></c:if>
+                        <dd><a href="/addcar">增加运力</a></dd>
+                        <dd><a href="/replacecar">修改运力</a></dd>
+                        <dd><a href="/carlist">运力列表</a></dd>
+                        <dd><a href="/managelist">运力安排</a></dd>
                     </dl>
                 </li>
                 </c:if>
