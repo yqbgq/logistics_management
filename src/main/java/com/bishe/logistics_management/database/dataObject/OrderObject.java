@@ -20,6 +20,9 @@ public class OrderObject {
     int price;
     int state;
     int checked;
+    int fromware;
+    int toware;
+    int otherfee;
 
     //Getter() and Setter()
     public int getId() {
@@ -141,5 +144,30 @@ public class OrderObject {
     public void setChecked(int checked) {
         this.checked = checked;
     }
+
+    public int getFromware() {
+        return fromware;
+    }
+
+    public void setFromware(int fromware) {
+        this.fromware = fromware;
+    }
+
+    public int getToware() {
+        return toware;
+    }
+
+    public void setToware(int toware) {
+        this.toware = toware;
+    }
+
+    public int getOtherfee() {
+        return otherfee;
+    }
+
+    public void setOtherfee(int otherfee) {
+        this.otherfee = otherfee;
+    }
+
     //Getter() and Setter()
 }

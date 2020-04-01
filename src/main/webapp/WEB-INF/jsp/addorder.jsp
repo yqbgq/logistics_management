@@ -31,12 +31,7 @@
                 </div>
             </div>
 
-            <div class="layui-inline">
-                <label class="layui-form-label">起始站点</label>
-                <div class="layui-input-inline">
-                    <input type="text" name="start" lay-verify="required" autocomplete="off" class="layui-input">
-                </div>
-            </div>
+
 
             <div class="layui-inline">
                 <label class="layui-form-label">目的站点</label>
@@ -44,7 +39,37 @@
                     <input type="text" name="end" lay-verify="required" autocomplete="off" class="layui-input">
                 </div>
             </div>
+        </div>
 
+
+        <div class="layui-form-item">
+
+
+            <div class="layui-inline">
+                <label class="layui-form-label">起始站点</label>
+                <div class="layui-input-inline">
+                    <select name="fromware" lay-verify="required" id="selectbox" lay-filter="select1">
+                        <option value="0"> </option>
+                        <option value="1">自定义地点</option>
+                        <option value="2">从仓库</option>
+                    </select>
+                </div>
+            </div>
+
+<!-- 一个是自定义地点，一个是选项框，选择有什么仓库-->
+            <div class="layui-inline" id="startFrom1" style="display:none">
+                <label class="layui-form-label">自定义地点</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="start" lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-inline" id="startFrom2" style="display:none">
+                <label class="layui-form-label">地址2</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="start" lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
+            </div>
         </div>
 
         <div class="layui-form-item">
@@ -99,6 +124,15 @@
 
         <div class="layui-form-item">
             <div class="layui-inline">
+                <label class="layui-form-label">其他费用</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="otherfee" lay-verify="required" autocomplete="off" class="layui-input" >
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <div class="layui-inline">
                 <label class="layui-form-label">额外描述</label>
                 <div class="layui-input-inline">
                     <textarea placeholder="请输入内容，最多300字" class="layui-textarea" name="tags" style="width:800px"></textarea>
@@ -118,6 +152,7 @@
 </div>
 <script src="./layui/layui.all.js" charset="utf-8"></script>
 <!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+<script src="./layui/jquery.js" charset="utf-8"></script>
 <script>
     layui.use(['form', 'layedit', 'laydate'], function(){
         var form = layui.form
@@ -130,6 +165,16 @@
         });
         laydate.render({
             elem: '#date1'
+        });
+        form.on('select(select1)', function(data){
+            if(data.value=="1"){
+                $("#startFrom2").hide();
+                $("#startFrom1").show();
+
+            }else{
+                $("#startFrom1").hide();
+                $("#startFrom2").show();
+            }
         });
     });
 </script>
