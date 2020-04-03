@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bishe.logistics_management.database.dao.WarehouseDao" >
+
+
+    <insert id="insertWarehouse" parameterType="com.bishe.logistics_management.database.dataObject.WarehouseObject">
+        insert into warehouse(name,pos,units,num) values(#{name},#{pos},#{units},#{num})
+    </insert>
+
+    <select id="getAllWarehouse" resultType="com.bishe.logistics_management.database.dataObject.WarehouseObject">
+        select * from warehouse
+    </select>
+
+    <select id="getById" parameterType="int" resultType="com.bishe.logistics_management.database.dataObject.WarehouseObject">
+        select * from warehouse where id = #{arg0}
+    </select>
+
+    <update id="updateWarehouse" parameterType="com.bishe.logistics_management.database.dataObject.WarehouseUnit">
+        update warehouse set units=#{units},num=#{num} where id=#{id}
+    </update>
+
+</mapper>

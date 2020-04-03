@@ -30,25 +30,15 @@
                     </select>
                 </div>
             </div>
-
-
-
-            <div class="layui-inline">
-                <label class="layui-form-label">目的站点</label>
-                <div class="layui-input-inline">
-                    <input type="text" name="end" lay-verify="required" autocomplete="off" class="layui-input">
-                </div>
-            </div>
         </div>
 
 
         <div class="layui-form-item">
 
-
             <div class="layui-inline">
                 <label class="layui-form-label">起始站点</label>
                 <div class="layui-input-inline">
-                    <select name="fromware" lay-verify="required" id="selectbox" lay-filter="select1">
+                    <select name="fromware" id="selectbox" lay-filter="select1">
                         <option value="0"> </option>
                         <option value="1">自定义地点</option>
                         <option value="2">从仓库</option>
@@ -56,18 +46,45 @@
                 </div>
             </div>
 
-<!-- 一个是自定义地点，一个是选项框，选择有什么仓库-->
             <div class="layui-inline" id="startFrom1" style="display:none">
                 <label class="layui-form-label">自定义地点</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="start" lay-verify="required" autocomplete="off" class="layui-input">
+                    <input type="text" name="start" autocomplete="off" class="layui-input">
                 </div>
             </div>
 
             <div class="layui-inline" id="startFrom2" style="display:none">
-                <label class="layui-form-label">地址2</label>
+                <label class="layui-form-label">仓库地点</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="start" lay-verify="required" autocomplete="off" class="layui-input">
+                    <input type="text" name="start"  autocomplete="off" class="layui-input">
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+
+            <div class="layui-inline">
+                <label class="layui-form-label">目的地点</label>
+                <div class="layui-input-inline">
+                    <select name="toware" id="selectbox2" lay-filter="select2">
+                        <option value="0"> </option>
+                        <option value="1">自定义地点</option>
+                        <option value="2">从仓库</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="layui-inline" id="toFrom1" style="display:none">
+                <label class="layui-form-label">自定义地点</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="end" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-inline" id="toFrom2" style="display:none">
+                <label class="layui-form-label">仓库地点</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="end" autocomplete="off" class="layui-input">
                 </div>
             </div>
         </div>
@@ -174,6 +191,17 @@
             }else{
                 $("#startFrom1").hide();
                 $("#startFrom2").show();
+            }
+        });
+
+        form.on('select(select2)', function(data){
+            if(data.value=="1"){
+                $("#toFrom2").hide();
+                $("#toFrom1").show();
+
+            }else{
+                $("#toFrom1").hide();
+                $("#toFrom2").show();
             }
         });
     });

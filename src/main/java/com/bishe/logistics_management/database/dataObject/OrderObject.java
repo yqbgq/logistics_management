@@ -5,24 +5,24 @@ package com.bishe.logistics_management.database.dataObject;
  * @author 黄伟
  */
 public class OrderObject {
-    int id;
-    int planuser;
-    String company;
-    String startPos;
-    String endPos;
-    String type;
-    String openDate;
-    String endDate;
-    String tags;
-    int weight;
-    int volume;
-    int method;
-    int price;
-    int state;
-    int checked;
-    int fromware;
-    int toware;
-    int otherfee;
+    private int id;
+    private int planuser;
+    private String company;
+    private String startPos;
+    private String endPos;
+    private String type;
+    private String openDate;
+    private String endDate;
+    private String tags;
+    private int weight;
+    private int volume;
+    private int method;
+    private int price;
+    private int state;
+    private int checked;
+    private int fromware;
+    private int toware;
+    private int otherfee;
 
     //Getter() and Setter()
     public int getId() {

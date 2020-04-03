@@ -6,8 +6,9 @@
 <mapper namespace="com.bishe.logistics_management.database.dao.OrderDao" >
 
     <insert id="insertOrder" parameterType="com.bishe.logistics_management.database.dataObject.OrderObject">
-        insert into orders(state,company,startpos,endpos,type,opendate,enddate,weight,volume,method,price,tags,checked,planuser)
-          values (#{state},#{company},#{startPos},#{endPos},#{type},now(),#{endDate},#{weight},#{volume},#{method},#{price},#{tags},#{checked},#{planuser})
+        insert into orders(state,company,startpos,endpos,type,opendate,enddate,weight,volume,method,price,tags,checked,planuser,fromware,toware,otherfee)
+          values (#{state},#{company},#{startPos},#{endPos},#{type},now(),#{endDate},#{weight},#{volume},
+                  #{method},#{price},#{tags},#{checked},#{planuser},#{fromware},#{toware},#{otherfee})
     </insert>
 
     <select id="getOrderById" parameterType="int" resultType="com.bishe.logistics_management.database.dataObject.OrderObject">

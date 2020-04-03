@@ -252,12 +252,28 @@ public class PlanController {
                                       @RequestParam("endtime") String endtime,
                                       @RequestParam("method") int method,
                                       @RequestParam("price") int price,
-                                      @RequestParam("tags") String tags){
+                                      @RequestParam("tags") String tags,
+                                      @RequestParam("fromware") int fromware,
+                                      @RequestParam("toware") int toware,
+                                      @RequestParam("otherfee") int otherfee){
         ModelAndView mv = new ModelAndView();
         if(CookieUtil.checkLogIn(mv,request)){
             mv.setViewName("redirect:/addorder");//跳转到订单列表
             OrderObject orderObject = new OrderObject();
+            if(fromware==1){
+                orderObject.setFromware(0);
+            }else{
+                orderObject.setFromware(1);
+            }
+            if(toware==1){
+                orderObject.setToware(0);
+            }else{
+                orderObject.setToware(1);
+            }
+            orderObject.setOtherfee(otherfee);
             orderObject.setCompany(company);
+            start = start.replaceAll(","," ");
+            end = end.replaceAll(","," ");
             orderObject.setStartPos(start);
             orderObject.setEndPos(end);
             orderObject.setType(type);
