@@ -18,6 +18,7 @@ public class WarehouseObject {
 
     private String units;
 
+    ///Getter() and Setter()
     public int getId() {
         return id;
     }
@@ -57,4 +58,5 @@ public class WarehouseObject {
     public void setUnits(String units) {
         this.units = units;
     }
+    //Getter() and Setter()
 }

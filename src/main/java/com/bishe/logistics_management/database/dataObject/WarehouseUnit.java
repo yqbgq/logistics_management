@@ -1,5 +1,9 @@
 package com.bishe.logistics_management.database.dataObject;
 
+/**
+ * 仓库库位类
+ * @author 黄伟
+ */
 public class WarehouseUnit {
     int id;
 
@@ -13,6 +17,7 @@ public class WarehouseUnit {
 
     String name;
 
+    //Getter() and Setter()
     public int getId() {
         return id;
     }
@@ -60,4 +65,5 @@ public class WarehouseUnit {
     public void setName(String name) {
         this.name = name;
     }
+    //Getter() and Setter()
 }
