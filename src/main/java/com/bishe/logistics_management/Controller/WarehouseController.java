@@ -114,6 +114,11 @@ public class WarehouseController {
         return mv;
     }
 
+    /**
+     * 仓库列表拦截器
+     * @param request 请求类
+     * @return MV
+     */
     @RequestMapping("warehouselist")
     public ModelAndView WarehouseList(HttpServletRequest request){
         ModelAndView mv = new ModelAndView();
@@ -130,6 +135,12 @@ public class WarehouseController {
         return mv;
     }
 
+    /**
+     * 仓库详细信息页面拦截器
+     * @param request 请求类
+     * @param id ID
+     * @return MV
+     */
     @RequestMapping("warehousedetail/{id}")
     public ModelAndView WarehouseDetail(HttpServletRequest request,
                                         @PathVariable("id") int id){

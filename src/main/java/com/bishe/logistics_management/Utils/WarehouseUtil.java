@@ -67,6 +67,10 @@ public class WarehouseUtil {
         return units;
     }
 
+    /**
+     * 处理实例，为仓库仓库添加属性信息，仓库总容量以及剩余容量
+     * @param warehouseObject 仓库数据类
+     */
     public static void ProcessInstance(WarehouseObject warehouseObject){
         ArrayList<WarehouseUnit> units = WarehouseUtil.StringToArray(warehouseObject.getUnits());
         int capacity = 0;
