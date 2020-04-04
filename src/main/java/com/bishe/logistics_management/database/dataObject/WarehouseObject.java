@@ -18,6 +18,10 @@ public class WarehouseObject {
 
     private String units;
 
+    private int capacity;
+
+    private int size;
+
     ///Getter() and Setter()
     public int getId() {
         return id;
@@ -58,5 +62,22 @@ public class WarehouseObject {
     public void setUnits(String units) {
         this.units = units;
     }
+
+    public int getCapacity() {
+        return capacity;
+    }
+
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
+    }
+
     //Getter() and Setter()
 }

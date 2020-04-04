@@ -9,7 +9,7 @@
     <title>物流管理系统后台</title>
     <link rel="stylesheet" href="/layui/css/layui.css">
 </head>
-<body class="layui-layout-body">
+<body class="layui-layout-body" style="background-color:#F5F5F5;">
 <div class="layui-layout layui-layout-admin">
     <div class="layui-header">
         <div class="layui-logo">物流管理系统</div>
@@ -78,6 +78,8 @@
                         <dl class="layui-nav-child">
                             <c:if test="${permission.warehouse == 2}" ><dd><a href="https://www.baidu.com">员工操作</a></dd></c:if>
                             <c:if test="${permission.warehouse==1}" ><dd><a href="javascript:;">主管操作</a></dd></c:if>
+                            <dd><a href="/addwarehouse">增加仓库</a></dd>
+                            <dd><a href="/addwarehouseunit">增加库位</a></dd>
                         </dl>
                     </li>
                 </c:if>

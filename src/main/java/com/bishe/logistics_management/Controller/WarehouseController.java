@@ -6,6 +6,7 @@ import com.bishe.logistics_management.database.dataObject.WarehouseObject;
 import com.bishe.logistics_management.database.dataObject.WarehouseUnit;
 import com.bishe.logistics_management.database.service.WarehouseService;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -48,7 +49,7 @@ public class WarehouseController {
                                          @RequestParam("pos") String pos){
         ModelAndView mv = new ModelAndView();
         if(CookieUtil.checkLogIn(mv,request)){
-            mv.setViewName("redirect:/index");
+            mv.setViewName("redirect:/addwarehouseunit");
             WarehouseObject warehouseObject = new WarehouseObject();
             warehouseObject.setName(name);
             warehouseObject.setPos(pos);
@@ -107,6 +108,37 @@ public class WarehouseController {
             warehouseObject.setUnits(warehouseObject.getUnits()+s);
             warehouseObject.setNum(warehouseObject.getNum()+1);
             WarehouseService.updateWarehouse(warehouseObject);
+        }else{
+            mv.setViewName("redirect:/log");
+        }
+        return mv;
+    }
+
+    @RequestMapping("warehouselist")
+    public ModelAndView WarehouseList(HttpServletRequest request){
+        ModelAndView mv = new ModelAndView();
+        if(CookieUtil.checkLogIn(mv,request)){
+            mv.setViewName("warehouselist");
+            ArrayList<WarehouseObject> warehouses = WarehouseService.getAllWarehouse();
+            for(WarehouseObject o : warehouses){
+                WarehouseUtil.ProcessInstance(o);
+            }
+            mv.addObject("warehouses",warehouses);
+        }else{
+            mv.setViewName("redirect:/log");
+        }
+        return mv;
+    }
+
+    @RequestMapping("warehousedetail/{id}")
+    public ModelAndView WarehouseDetail(HttpServletRequest request,
+                                        @PathVariable("id") int id){
+        ModelAndView mv = new ModelAndView();
+        if(CookieUtil.checkLogIn(mv,request)){
+            mv.setViewName("warehousedetail");
+            WarehouseObject warehouseObject = WarehouseService.getById(id);
+            mv.addObject("warehouse",warehouseObject);
+            mv.addObject("units",WarehouseUtil.StringToArray(warehouseObject.getUnits()));
         }else{
             mv.setViewName("redirect:/log");
         }

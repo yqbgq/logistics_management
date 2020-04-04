@@ -5,17 +5,17 @@ package com.bishe.logistics_management.database.dataObject;
  * @author 黄伟
  */
 public class WarehouseUnit {
-    int id;
+    private int id;
 
-    String belong;
+    private String belong;
 
-    String belongPos;
+    private String belongPos;
 
-    int capacity;//总容量
+    private int capacity;//总容量
 
-    int size;//剩余容量
+    private int size;//剩余容量
 
-    String name;
+    private String name;
 
     //Getter() and Setter()
     public int getId() {
@@ -65,5 +65,6 @@ public class WarehouseUnit {
     public void setName(String name) {
         this.name = name;
     }
+
     //Getter() and Setter()
 }
