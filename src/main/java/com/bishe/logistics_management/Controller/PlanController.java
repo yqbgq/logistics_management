@@ -109,8 +109,8 @@ public class PlanController {
                                     @RequestParam("phone") String phone,
                                     @RequestParam("brand") String brand,
                                     @RequestParam("type") String type,
-                                    @RequestParam("length") int length,
-                                    @RequestParam("size") int size,
+                                    @RequestParam("length") float length,
+                                    @RequestParam("size") float size,
                                     @RequestParam("times") String times,
                                     @RequestParam("tags") String tags,
                                     @RequestParam("number") String number,
@@ -131,6 +131,8 @@ public class PlanController {
             carObject.setNumber(number);
             carObject.setCurrent(current);
             carObject.setState(0);
+            carObject.setAwaydate("0000-00-00");
+            carObject.setTarget("");
             CarService.insertCar(carObject);
         }else{
             mv.setViewName("redirect:/log");
@@ -208,6 +210,8 @@ public class PlanController {
         return mv;
     }
 
+    //todo 新增订单从仓库时候，需要增加下拉列表
+    //todo 关联上订单和仓库信息
     /**
      * 添加订单，并且插入数据库
      * @param request 请求类
@@ -285,6 +289,7 @@ public class PlanController {
             orderObject.setTags(tags);
             orderObject.setState(0);//状态为0表示还没有结束该订单
             orderObject.setChecked(0);//0表示该订单还没有被确认
+            orderObject.setPlanuser(Integer.valueOf(CookieUtil.getValue(request,"id")));
             OrderService.insertOrder(orderObject);
         }else{
             mv.setViewName("redirect:/log");
@@ -376,7 +381,7 @@ public class PlanController {
             ArrayList<CarObject> cars = CarService.getEmptyCar(orderObject.getStartPos(),orderObject.getEndDate());
             for(int i=0;i<cars.size();i++){
                 if(cars.get(i).getSize() <= orderObject.getVolume())cars.get(i).setId(-1);
-                if(cars.get(i).getAwaydate().equals("000-00-00"))cars.get(i).setAwaydate("尚未安排");
+                if(cars.get(i).getAwaydate().equals("0000-00-00"))cars.get(i).setAwaydate("尚未安排");
             }
             mv.addObject("cars",cars);
             mv.addObject("order",orderObject);
@@ -437,6 +442,25 @@ public class PlanController {
         if(CookieUtil.checkLogIn(mv,request)){
             mv.setViewName("managelist");
             ArrayList<OrderObject> orders = OrderService.getNeedManage();
+            mv.addObject("orders",orders);
+        }else{
+            mv.setViewName("redirect:/log");
+        }
+        return mv;
+    }
+
+    /**
+     * 显示营销部中在途订单的页面，这里还可以通往展示详细页面
+     * @param request 请求类
+     * @return 返回MV
+     */
+    //todo 订单列表页面要细化
+    @RequestMapping("onroad")
+    public ModelAndView onRoad(HttpServletRequest request){
+        ModelAndView mv = new ModelAndView();
+        if(CookieUtil.checkLogIn(mv,request)){
+            mv.setViewName("onroad");
+            ArrayList<OrderObject> orders = OrderService.getAllOnRoad();
             mv.addObject("orders",orders);
         }else{
             mv.setViewName("redirect:/log");

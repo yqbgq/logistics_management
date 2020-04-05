@@ -2,7 +2,6 @@ package com.bishe.logistics_management.database.dao;
 
 import com.bishe.logistics_management.database.dataObject.CarObject;
 import org.apache.ibatis.annotations.Mapper;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -52,7 +51,7 @@ public interface CarDao {
      * @param id 车辆ID
      * @param size 修改之后的载货空间
      */
-    void subSize(int id,int size);
+    void subSize(float id,float size);
 
     /**
      * 修改车辆的离港信息

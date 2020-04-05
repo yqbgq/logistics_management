@@ -149,7 +149,7 @@
                     <td style="text-align:center;margin:auto">${item.size}</td>
                     <td style="text-align:center;margin:auto">${item.awaydate}</td>
                     <form action="/associateorder/${order.id}/${item.id}" method="post">
-                        <td style="text-align:center;margin:auto"><input type="text" name="dates" id="date" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input" ></td>
+                        <td style="text-align:center;margin:auto"><input type="date" name="dates" lay-verify="date" placeholder="yyyy-MM-dd" class="layui-input"/></td>
                         <td style="text-align:center;margin:auto"><button type="submit" class="layui-btn" lay-submit="" lay-filter="demo1">安排</button></td>
                     </form>
                 </tr>

@@ -2,6 +2,7 @@ package com.bishe.logistics_management.Controller;
 
 import com.bishe.logistics_management.Utils.CookieUtil;
 import com.bishe.logistics_management.Utils.LogRecordUtil;
+import com.bishe.logistics_management.database.dataObject.UsersObject;
 import com.bishe.logistics_management.database.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,7 +33,7 @@ public class LogController {
         return "log";
     }
     /**
-     * 用于处理登录表单提交的数据 POST
+     * 用于处理登录表单提交的数据 POST ,在Cookie中添加了用户的姓名、密码以及ID
      * @param username 由表单提交的用户名
      * @param password 由表单提交的密码
      * @param response 响应变量
@@ -46,6 +47,8 @@ public class LogController {
         if(UserService.check(username,password) >= 1){
             CookieUtil.set(response,"username",username);
             CookieUtil.set(response,"password",password);
+            UsersObject u = UserService.getUserByAll(username,password);
+            CookieUtil.set(response,"id",String.valueOf(u.getId()));
             mv.setViewName("redirect:/tempredirect");
             return mv;
         }else{

@@ -69,7 +69,7 @@ public class CarService {
      * @param id 车辆ID
      * @param size 车辆剩余载荷
      */
-    public static void subSize(int id,int size){CarService.carDao.subSize(id,size);}
+    public static void subSize(float id,float size){CarService.carDao.subSize(id,size);}
 
     /**
      * 修改车辆的离港时间

@@ -73,4 +73,10 @@ public interface OrderDao {
      * @param id 订单ID
      */
     void manageId(int id);
+
+    /**
+     * 获取所有在途运单信息
+     * @return 在途运单列表
+     */
+    ArrayList<OrderObject> getAllOnRoad();
 }

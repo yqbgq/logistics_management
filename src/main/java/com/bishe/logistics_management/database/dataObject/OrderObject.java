@@ -14,8 +14,8 @@ public class OrderObject {
     private String openDate;
     private String endDate;
     private String tags;
-    private int weight;
-    private int volume;
+    private float weight;
+    private float volume;
     private int method;
     private int price;
     private int state;
@@ -97,19 +97,19 @@ public class OrderObject {
         this.tags = tags;
     }
 
-    public int getWeight() {
+    public float getWeight() {
         return weight;
     }
 
-    public void setWeight(int weight) {
+    public void setWeight(float weight) {
         this.weight = weight;
     }
 
-    public int getVolume() {
+    public float getVolume() {
         return volume;
     }
 
-    public void setVolume(int volume) {
+    public void setVolume(float volume) {
         this.volume = volume;
     }
 

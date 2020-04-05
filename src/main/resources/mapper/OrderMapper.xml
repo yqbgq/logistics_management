@@ -46,4 +46,8 @@
     <update id="manageId" parameterType="int">
         update orders set state=1 where id = #{arg0}
     </update>
+
+    <select id="getAllOnRoad" resultType="com.bishe.logistics_management.database.dataObject.OrderObject">
+        select * from orders where state=1 and checked=1
+    </select>
 </mapper>

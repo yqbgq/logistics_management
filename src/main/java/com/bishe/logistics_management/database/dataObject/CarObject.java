@@ -12,9 +12,9 @@ public class CarObject {
     private String type;
     private String brand;
     private String times;
-    private int length;
-    private int size;
-    private int capacity;
+    private float length;
+    private float size;
+    private float capacity;
     private String tags;
     private String number;
     private String target;
@@ -70,27 +70,27 @@ public class CarObject {
         this.times = times;
     }
 
-    public int getLength() {
+    public float getLength() {
         return length;
     }
 
-    public void setLength(int length) {
+    public void setLength(float length) {
         this.length = length;
     }
 
-    public int getSize() {
+    public float getSize() {
         return size;
     }
 
-    public void setSize(int size) {
+    public void setSize(float size) {
         this.size = size;
     }
 
-    public int getCapacity() {
+    public float getCapacity() {
         return capacity;
     }
 
-    public void setCapacity(int capacity) {
+    public void setCapacity(float capacity) {
         this.capacity = capacity;
     }
 

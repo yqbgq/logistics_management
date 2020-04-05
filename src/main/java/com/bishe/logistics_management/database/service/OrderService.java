@@ -100,4 +100,12 @@ public class OrderService {
      * @param id 订单ID
      */
     public static void manageId(int id){OrderService.orderDao.manageId(id);}
+
+    /**
+     * 获取所有在途订单
+     * @return 在途订单
+     */
+    public static ArrayList<OrderObject> getAllOnRoad(){
+        return OrderService.orderDao.getAllOnRoad();
+    }
 }
