@@ -467,4 +467,32 @@ public class PlanController {
         }
         return mv;
     }
+
+    /**
+     * 订单详细信息的映射
+     * @param request 请求类
+     * @param id 订单ID
+     * @return 返回MV
+     */
+    @RequestMapping("orderdetail/{id}")
+    public ModelAndView OrderDetail(HttpServletRequest request,
+                                    @PathVariable("id") int id){
+        ModelAndView mv = new ModelAndView();
+        if(CookieUtil.checkLogIn(mv,request)){
+            mv.setViewName("orderdetail");
+            OrderObject orderObject = OrderService.getOrderById(id);
+            mv.addObject("order",orderObject);
+            if(orderObject.getMethod()==1)mv.addObject("method","按照立方");
+            else mv.addObject("method","按照重量");
+            if(orderObject.getChecked()==0)mv.addObject("checked","暂未审核");
+            else mv.addObject("checked","审核通过");
+            ManagementObject managementObject = ManagementService.getByOrderId(id);
+            mv.addObject("management",managementObject);
+            CarObject carObject = CarService.getById(managementObject.getCarid());
+            mv.addObject("car",carObject);
+        }else{
+            mv.setViewName("redirect:/log");
+        }
+        return mv;
+    }
 }

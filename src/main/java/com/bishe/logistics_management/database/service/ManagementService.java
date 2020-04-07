@@ -30,4 +30,13 @@ public class ManagementService {
     public static void insertManagement(ManagementObject managementObject){
         ManagementService.managementDao.insertManagement(managementObject);
     }
+
+    /**
+     * 按照订单获取Management
+     * @param id 计划ID
+     * @return 返回Management
+     */
+    public static ManagementObject getByOrderId(int id){
+        return ManagementService.managementDao.getByOrderId(id);
+    }
 }

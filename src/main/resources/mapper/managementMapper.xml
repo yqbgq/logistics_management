@@ -9,4 +9,8 @@
         insert into management(orderid,carid,planuser,manageuser,away) values(#{orderid},#{carid},#{planuser},#{manageuser},#{away})
     </insert>
 
+    <select id="getByOrderId" parameterType="int" resultType="com.bishe.logistics_management.database.dataObject.ManagementObject">
+        select * from management where orderid = #{arg0}
+    </select>
+
 </mapper>

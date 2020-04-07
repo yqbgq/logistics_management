@@ -16,4 +16,11 @@ public interface ManagementDao {
      * @param managementObject Management数据类
      */
     void insertManagement(ManagementObject managementObject);
+
+    /**
+     * 按照ID获取Management
+     * @param id ID
+     * @return 返回Management
+     */
+    ManagementObject getByOrderId(int id);
 }

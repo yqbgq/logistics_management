@@ -31,7 +31,15 @@
         <td style="text-align:center;margin:auto">${item.endPos}</td>
         <td style="text-align:center;margin:auto">${item.type}</td>
         <td style="text-align:center;margin:auto">${item.endDate}</td>
-        <td style="text-align:center;margin:auto"><button type="button" class="layui-btn" onclick="window.location.href = '/ordercheck/${item.id}'"><i class="layui-icon"></i></button></td>
+        <td style="text-align:center;margin:auto">
+            <c:if test="${item.checked==0}">
+                <button type="button" class="layui-btn" onclick="window.location.href = '/ordercheck/${item.id}'">
+            </c:if>
+            <c:if test="${item.checked==1}">
+                <button type="button" class="layui-btn" onclick="window.location.href = '/orderdetail/${item.id}'">
+            </c:if>
+
+                <i class="layui-icon"></i></button></td>
     </tr>
     </c:forEach>
 
