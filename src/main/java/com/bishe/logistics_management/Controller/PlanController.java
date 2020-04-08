@@ -223,6 +223,8 @@ public class PlanController {
         if(CookieUtil.checkLogIn(mv,request)){
             mv.setViewName("addorder");
             ArrayList<CompanyObject> companies = CompanyService.getAllCompany();
+            ArrayList<WarehouseObject> warehouses = WarehouseService.getAllWarehouse();
+            mv.addObject("warehouses",warehouses);
             mv.addObject("companies",companies);
         }else{
             mv.setViewName("redirect:/log");
@@ -378,7 +380,7 @@ public class PlanController {
                 mv.setViewName("redirect:/orderlist");
                 return mv;
             }
-            ArrayList<CarObject> cars = CarService.getEmptyCar(orderObject.getStartPos(),orderObject.getEndDate());
+            ArrayList<CarObject> cars = CarService.getEmptyCar(orderObject.getEndDate());
             for(int i=0;i<cars.size();i++){
                 if(cars.get(i).getSize() <= orderObject.getVolume())cars.get(i).setId(-1);
                 if(cars.get(i).getAwaydate().equals("0000-00-00"))cars.get(i).setAwaydate("尚未安排");
@@ -418,11 +420,12 @@ public class PlanController {
             CarService.subSize(carid,car.getSize()-order.getVolume());
             car.setAwaydate(date);
             CarService.updateAway(car);
+            UsersObject user = UserService.getUser(Integer.valueOf(CookieUtil.getValue(request,"id")));
             ManagementObject managementObject = new ManagementObject();
             managementObject.setAway(date);
             managementObject.setCarid(carid);
             managementObject.setOrderid(orderid);
-            managementObject.setManageuser(UserUtil.getUser(request).getName());
+            managementObject.setManageuser(user.getName());
             managementObject.setPlanuser(UserService.getUser(order.getPlanuser()).getName());
             ManagementService.insertManagement(managementObject);
         }else{

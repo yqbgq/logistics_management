@@ -79,4 +79,11 @@ public interface OrderDao {
      * @return 在途运单列表
      */
     ArrayList<OrderObject> getAllOnRoad();
+
+    /**
+     * 获取到达仓库的订单信息
+     * @return 订单列表
+     */
+    ArrayList<OrderObject> getToWarehouse();
+
 }

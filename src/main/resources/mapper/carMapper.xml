@@ -26,8 +26,8 @@
     <!--获取符合要求的车辆，要求其能够在当前位置而且在港，要求其没有被安排任务或者安排了任务并且离港日期要晚于要求日期并且还有空余，给他凑一车 -->
     <select id="getEmptyCar" resultType="com.bishe.logistics_management.database.dataObject.CarObject" parameterType="String">
         select * from
-                      (select * from car where current=#{arg0} and state=0) as a
-        where (awaydate = '0000-00-00' ) or (#{arg1}>=awaydate)
+                      (select * from car where state=0) as a
+        where (awaydate = '0000-00-00' ) or (#{arg0}>=awaydate)
     </select>
 
     <update id="subSize" parameterType="float">

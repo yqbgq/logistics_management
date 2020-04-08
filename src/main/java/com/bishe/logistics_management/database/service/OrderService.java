@@ -108,4 +108,12 @@ public class OrderService {
     public static ArrayList<OrderObject> getAllOnRoad(){
         return OrderService.orderDao.getAllOnRoad();
     }
+
+    /**
+     * 获取到达仓库的在途订单
+     * @return 返回MV
+     */
+    public static ArrayList<OrderObject> getToWarehouse(){
+        return OrderService.orderDao.getToWarehouse();
+    }
 }

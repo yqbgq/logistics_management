@@ -2,8 +2,10 @@ package com.bishe.logistics_management.Controller;
 
 import com.bishe.logistics_management.Utils.CookieUtil;
 import com.bishe.logistics_management.Utils.WarehouseUtil;
+import com.bishe.logistics_management.database.dataObject.OrderObject;
 import com.bishe.logistics_management.database.dataObject.WarehouseObject;
 import com.bishe.logistics_management.database.dataObject.WarehouseUnit;
+import com.bishe.logistics_management.database.service.OrderService;
 import com.bishe.logistics_management.database.service.WarehouseService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -150,6 +152,24 @@ public class WarehouseController {
             WarehouseObject warehouseObject = WarehouseService.getById(id);
             mv.addObject("warehouse",warehouseObject);
             mv.addObject("units",WarehouseUtil.StringToArray(warehouseObject.getUnits()));
+        }else{
+            mv.setViewName("redirect:/log");
+        }
+        return mv;
+    }
+
+    /**
+     * 到达仓库页面信息
+     * @param request 请求类
+     * @return 返回MV
+     */
+    @RequestMapping("towarehouse")
+    public ModelAndView ToWarehouse(HttpServletRequest request){
+        ModelAndView mv = new ModelAndView();
+        if(CookieUtil.checkLogIn(mv,request)){
+            mv.setViewName("towarehouse");
+            ArrayList<OrderObject> orders = OrderService.getToWarehouse();
+            mv.addObject("orders",orders);
         }else{
             mv.setViewName("redirect:/log");
         }

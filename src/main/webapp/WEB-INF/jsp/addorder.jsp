@@ -56,7 +56,12 @@
             <div class="layui-inline" id="startFrom2" style="display:none">
                 <label class="layui-form-label">仓库地点</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="start"  autocomplete="off" class="layui-input">
+                    <select name="start" lay-filter="select1">
+                        <option value="0"> </option>
+                        <c:forEach var="item" items="${warehouses}" varStatus="status">
+                        <option value="${item.name}">${item.name}</option>
+                        </c:forEach>
+                    </select>
                 </div>
             </div>
         </div>

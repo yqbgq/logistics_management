@@ -100,16 +100,25 @@
     </form>
 
 </div>
-
-<script src="../layui/layui.js" charset="utf-8"></script>
+<script src="../layui/layui.all.js" charset="utf-8"></script>
 <!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+<script src="../layui/jquery.js" charset="utf-8"></script>
+
+<script>
+    function addInput(formName,name, value) {
+        var tempInput = document.createElement("input");
+        tempInput.name = name;
+        tempInput.value = value;
+        return tempInput;
+    }
+</script>
+
 <script>
     layui.use(['form', 'layedit', 'laydate'], function(){
         var form = layui.form
             ,layer = layui.layer
             ,layedit = layui.layedit
             ,laydate = layui.laydate;
-
         //日期
         laydate.render({
             elem: '#date'
@@ -118,8 +127,16 @@
             elem: '#date1'
         });
 
+
     });
 </script>
+
+
+<div class="layui-footer">
+    <!-- 底部固定区域 -->
+    鸣谢：LayUI
+</div>
+</div>
 
 </body>
 </html>

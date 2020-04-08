@@ -81,6 +81,7 @@
                             <c:if test="${permission.warehouse==1}" ><dd><a href="javascript:;">主管操作</a></dd></c:if>
                             <dd><a href="/addwarehouse">增加仓库</a></dd>
                             <dd><a href="/addwarehouseunit">增加库位</a></dd>
+                            <dd><a href="/warehouselist">仓库列表</a></dd>
                         </dl>
                     </li>
                 </c:if>

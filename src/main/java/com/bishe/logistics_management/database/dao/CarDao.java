@@ -40,11 +40,10 @@ public interface CarDao {
 
     /**
      * 获取满足条件的车辆
-     * @param current 当前车辆位置
      * @param awaydate 离港日期
      * @return 返回满足条件的车辆的列表
      */
-    ArrayList<CarObject> getEmptyCar(String current,String awaydate);
+    ArrayList<CarObject> getEmptyCar(String awaydate);
 
     /**
      * 修改车辆信息，减去载货空间

@@ -56,12 +56,11 @@ public class CarService {
 
     /**
      * 获取符合要求的空车
-     * @param current 当前车辆位置
      * @param awaydate 车辆离港日期
      * @return 返回车辆列表
      */
-    public static ArrayList<CarObject> getEmptyCar(String current,String awaydate){
-        return CarService.carDao.getEmptyCar(current,awaydate);
+    public static ArrayList<CarObject> getEmptyCar(String awaydate){
+        return CarService.carDao.getEmptyCar(awaydate);
     }
 
     /**

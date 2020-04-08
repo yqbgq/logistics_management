@@ -50,4 +50,8 @@
     <select id="getAllOnRoad" resultType="com.bishe.logistics_management.database.dataObject.OrderObject">
         select * from orders where state=1 and checked=1
     </select>
+
+    <select id="getToWarehouse" resultType="com.bishe.logistics_management.database.dataObject.OrderObject">
+        select * from orders where checked=1 and state=1 and toware=1
+    </select>
 </mapper>
