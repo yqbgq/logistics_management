@@ -5,12 +5,13 @@ package com.bishe.logistics_management.database.dataObject;
  * @author 黄伟
  */
 public class ManagementObject {
-    int id;
-    int orderid;
-    int carid;
-    String planuser;
-    String manageuser;
-    String away;
+    private int id;
+    private int orderid;
+    private int carid;
+    private String planuser;
+    private String manageuser;
+    private String away;
+    private int complete;
 
     //Getter() and Setter()
 

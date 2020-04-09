@@ -75,4 +75,12 @@ public class CarService {
      * @param carObject 车辆数据类
      */
     public static void updateAway(CarObject carObject){CarService.carDao.updateAway(carObject);}
+
+    /**
+     * 车辆到达目的地店
+     * @param carId 车辆ID
+     */
+    public static void arriveTarget(int carId){
+        CarService.carDao.arriveTarget(carId);
+    }
 }

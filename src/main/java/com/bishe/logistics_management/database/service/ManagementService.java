@@ -6,6 +6,8 @@ import com.bishe.logistics_management.database.dataObject.ManagementObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+
 /**
  * Management的服务层
  * @author 黄伟
@@ -38,5 +40,22 @@ public class ManagementService {
      */
     public static ManagementObject getByOrderId(int id){
         return ManagementService.managementDao.getByOrderId(id);
+    }
+
+    /**
+     * 完成某个订单的安排
+     * @param orderId 订单ID
+     */
+    public static void completeOrder(int orderId){
+        ManagementService.managementDao.completeOrder(orderId);
+    }
+
+    /**
+     * 获取承运了这票订单的车辆的其余承运计划
+     * @param carId 车辆ID
+     * @return 返回车辆计划表
+     */
+    public static ArrayList<ManagementObject> getRunningCar(int carId){
+        return ManagementService.managementDao.getRunningCar(carId);
     }
 }

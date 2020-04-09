@@ -6,11 +6,19 @@
 <mapper namespace="com.bishe.logistics_management.database.dao.ManagementDao" >
 
     <insert id="insertManagement" parameterType="com.bishe.logistics_management.database.dataObject.ManagementObject">
-        insert into management(orderid,carid,planuser,manageuser,away) values(#{orderid},#{carid},#{planuser},#{manageuser},#{away})
+        insert into management(orderid,carid,planuser,manageuser,away,complete) values(#{orderid},#{carid},#{planuser},#{manageuser},#{away},0)
     </insert>
 
     <select id="getByOrderId" parameterType="int" resultType="com.bishe.logistics_management.database.dataObject.ManagementObject">
         select * from management where orderid = #{arg0}
+    </select>
+
+    <update id="completeOrder" parameterType="int">
+        update management set complete=1 where orderid = #{arg0}
+    </update>
+
+    <select id="getRunningCar" parameterType="int" resultType="com.bishe.logistics_management.database.dataObject.ManagementObject">
+        select * from management where carid = #{arg0}
     </select>
 
 </mapper>

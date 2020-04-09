@@ -59,4 +59,21 @@ public class WarehouseService {
         WarehouseService.warehouseDao.updateWarehouse(warehouseObject);
     }
 
+    /**
+     * 按照仓库名字获取仓库
+     * @param name 仓库名字
+     * @return 返回仓库数据类
+     */
+    public static WarehouseObject getByName(String name){
+        return WarehouseService.warehouseDao.getByName(name);
+    }
+
+    /**
+     * 订单入库，减少库位容积
+     * @param warehouseObject 仓库数据类
+     */
+    public static void subUnitSize(WarehouseObject warehouseObject){
+        WarehouseService.warehouseDao.subUnitSize(warehouseObject);
+    }
+
 }

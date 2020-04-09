@@ -86,4 +86,10 @@ public interface OrderDao {
      */
     ArrayList<OrderObject> getToWarehouse();
 
+    /**
+     * 完成这个订单，修改订单的状态state
+     * @param id 订单ID
+     */
+    void completeOrder(int id);
+
 }

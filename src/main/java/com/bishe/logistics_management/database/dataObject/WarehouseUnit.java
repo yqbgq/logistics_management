@@ -11,9 +11,9 @@ public class WarehouseUnit {
 
     private String belongPos;
 
-    private int capacity;//总容量
+    private float capacity;//总容量
 
-    private int size;//剩余容量
+    private float size;//剩余容量
 
     private String name;
 
@@ -42,19 +42,19 @@ public class WarehouseUnit {
         this.belongPos = belongPos;
     }
 
-    public int getCapacity() {
+    public float getCapacity() {
         return capacity;
     }
 
-    public void setCapacity(int capacity) {
+    public void setCapacity(float capacity) {
         this.capacity = capacity;
     }
 
-    public int getSize() {
+    public float getSize() {
         return size;
     }
 
-    public void setSize(int size) {
+    public void setSize(float size) {
         this.size = size;
     }
 

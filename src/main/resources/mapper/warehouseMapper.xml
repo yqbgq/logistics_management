@@ -22,4 +22,11 @@
         update warehouse set units=#{units},num=#{num} where id=#{id}
     </update>
 
+    <select id="getByName" parameterType="String" resultType="com.bishe.logistics_management.database.dataObject.WarehouseObject">
+        select * from warehouse where name = #{arg0}
+    </select>
+
+    <update id="subUnitSize" parameterType="com.bishe.logistics_management.database.dataObject.WarehouseObject">
+        update warehouse set units=#{units} where id = #{id}
+    </update>
 </mapper>

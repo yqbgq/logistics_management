@@ -1,8 +1,14 @@
 package com.bishe.logistics_management.Utils;
 
+import com.bishe.logistics_management.database.dataObject.OrderObject;
 import com.bishe.logistics_management.database.dataObject.WarehouseObject;
 import com.bishe.logistics_management.database.dataObject.WarehouseUnit;
+import com.bishe.logistics_management.database.service.OrderService;
+import com.bishe.logistics_management.database.service.WarehouseService;
+
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 仓库数据类的工具类
@@ -17,12 +23,12 @@ public class WarehouseUtil {
     public static String ArrayToString(ArrayList<WarehouseUnit> units){
         StringBuilder sb = new StringBuilder();
         for(WarehouseUnit e : units){
-            sb.append(e.getBelongPos());sb.append("$$");
-            sb.append(e.getBelong());sb.append("$$");
-            sb.append(e.getId());sb.append("$$");
-            sb.append(e.getCapacity());sb.append("$$");
-            sb.append(e.getName());sb.append("$$");
-            sb.append(e.getSize());sb.append("||");
+            sb.append(e.getBelongPos());sb.append("<>");
+            sb.append(e.getBelong());sb.append("<>");
+            sb.append(e.getId());sb.append("<>");
+            sb.append(e.getCapacity());sb.append("<>");
+            sb.append(e.getName());sb.append("<>");
+            sb.append(e.getSize());sb.append("!!");
         }
         return sb.toString();
     }
@@ -58,9 +64,9 @@ public class WarehouseUtil {
                 e.setBelongPos(temp[0]);
                 e.setBelong(temp[1]);
                 e.setId(Integer.valueOf(temp[2]));
-                e.setCapacity(Integer.valueOf(temp[3]));
+                e.setCapacity(Float.valueOf(temp[3]));
                 e.setName(temp[4]);
-                e.setSize(Integer.valueOf(temp[5]));
+                e.setSize(Float.valueOf(temp[5]));
                 units.add(e);
             }
         }
@@ -81,5 +87,32 @@ public class WarehouseUtil {
         }
         warehouseObject.setSize(size);
         warehouseObject.setCapacity(capacity);
+    }
+
+    /**
+    public static HashMap<String,ArrayList<WarehouseUnit>> getAllWarehouseUnitList(){
+        HashMap<String,ArrayList<WarehouseUnit>> map = new HashMap<>();
+        ArrayList<WarehouseObject> warehouses = WarehouseService.getAllWarehouse();
+        for(int i=0;i<warehouses.size();i++){
+            ArrayList<WarehouseUnit> e = StringToArray(warehouses.get(i).getUnits());
+            map.put(warehouses.get(i).getName(),e);
+        }
+        return map;
+    }
+     **/
+
+
+    /**
+     * 订单入库，削减仓库库位容积
+     * @param orderId 订单ID
+     * @param unitId 库位ID
+     */
+    public static void subUnitSize(int orderId,int unitId){
+        OrderObject orderObject = OrderService.getOrderById(orderId);
+        WarehouseObject warehouseObject = WarehouseService.getByName(orderObject.getEndPos());
+        ArrayList<WarehouseUnit> units = WarehouseUtil.StringToArray(warehouseObject.getUnits());
+        units.get(unitId-1).setSize(units.get(unitId-1).getSize()-orderObject.getVolume());
+        warehouseObject.setUnits(WarehouseUtil.ArrayToString(units));
+        WarehouseService.subUnitSize(warehouseObject);
     }
 }

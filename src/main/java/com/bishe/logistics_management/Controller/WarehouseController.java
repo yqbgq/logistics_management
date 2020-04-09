@@ -1,10 +1,11 @@
 package com.bishe.logistics_management.Controller;
 
 import com.bishe.logistics_management.Utils.CookieUtil;
+import com.bishe.logistics_management.Utils.ToWarehouseUtil;
 import com.bishe.logistics_management.Utils.WarehouseUtil;
-import com.bishe.logistics_management.database.dataObject.OrderObject;
-import com.bishe.logistics_management.database.dataObject.WarehouseObject;
-import com.bishe.logistics_management.database.dataObject.WarehouseUnit;
+import com.bishe.logistics_management.database.dataObject.*;
+import com.bishe.logistics_management.database.service.CarService;
+import com.bishe.logistics_management.database.service.ManagementService;
 import com.bishe.logistics_management.database.service.OrderService;
 import com.bishe.logistics_management.database.service.WarehouseService;
 import org.springframework.stereotype.Controller;
@@ -12,8 +13,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * 仓库页面拦截器
@@ -169,7 +173,36 @@ public class WarehouseController {
         if(CookieUtil.checkLogIn(mv,request)){
             mv.setViewName("towarehouse");
             ArrayList<OrderObject> orders = OrderService.getToWarehouse();
-            mv.addObject("orders",orders);
+            ArrayList<ToWarehouseObject> toes = ToWarehouseUtil.combine(orders);
+            mv.addObject("toes",toes);
+        }else{
+            mv.setViewName("redirect:/log");
+        }
+        return mv;
+    }
+
+    /**
+     * 将仓库在途订单入库审核拦截器
+     * @param request 请求类
+     * @param id 订单ID
+     * @param unit 入库的库位ID
+     * @return 返回MV
+     */
+    @RequestMapping("intowarehouse/{id}")
+    public ModelAndView IntoWarehouse(HttpServletRequest request,
+                                      @PathVariable("id") int id,
+                                      @RequestParam("unit") int unit){
+        ModelAndView mv = new ModelAndView();
+        if(CookieUtil.checkLogIn(mv,request)){
+            mv.setViewName("redirect:/towarehouse");
+            ManagementService.completeOrder(id);//完成计划表
+            ManagementObject managementObject = ManagementService.getByOrderId(id);
+            ArrayList<ManagementObject> managementlist = ManagementService.getRunningCar(managementObject.getCarid());
+            if(managementlist.size()==0){
+                CarService.arriveTarget(managementObject.getCarid());
+            }
+            WarehouseUtil.subUnitSize(id,unit);
+            OrderService.completeOrder(id);
         }else{
             mv.setViewName("redirect:/log");
         }

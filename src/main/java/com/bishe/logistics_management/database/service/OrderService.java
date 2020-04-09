@@ -116,4 +116,12 @@ public class OrderService {
     public static ArrayList<OrderObject> getToWarehouse(){
         return OrderService.orderDao.getToWarehouse();
     }
+
+    /**
+     * 完成订单
+     * @param id 订单ID
+     */
+    public static void completeOrder(int id){
+        OrderService.orderDao.completeOrder(id);
+    }
 }

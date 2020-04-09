@@ -39,4 +39,17 @@ public interface WarehouseDao {
      * @param warehouseObject 仓库类
      */
     void updateWarehouse(WarehouseObject warehouseObject);
+
+    /**
+     * 按照仓库的名字获取仓库
+     * @param name 仓库名字
+     * @return 仓库数据类
+     */
+    WarehouseObject getByName(String name);
+
+    /**
+     * 货物入库，仓库库位减少容积
+     * @param warehouseObject 仓库数据类
+     */
+    void subUnitSize(WarehouseObject warehouseObject);
 }

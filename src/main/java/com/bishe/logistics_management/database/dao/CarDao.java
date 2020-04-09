@@ -57,4 +57,11 @@ public interface CarDao {
      * @param carObject 车辆类
      */
     void updateAway(CarObject carObject);
+
+    /**
+     * 设置车辆到达
+     * @param carId 车辆ID
+     */
+    //todo 这里车辆还要修改很多东西，但是今天没时间了
+    void arriveTarget(int carId);
 }

@@ -54,4 +54,8 @@
     <select id="getToWarehouse" resultType="com.bishe.logistics_management.database.dataObject.OrderObject">
         select * from orders where checked=1 and state=1 and toware=1
     </select>
+
+    <update id="completeOrder" parameterType="int">
+        update orders set state=2 where id=#{arg0}
+    </update>
 </mapper>
