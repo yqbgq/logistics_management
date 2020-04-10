@@ -17,7 +17,7 @@ public class OrderObject {
     private float weight;
     private float volume;
     private int method;
-    private int price;
+    private float price;
     private int state;
     private int checked;
     private int fromware;
@@ -121,11 +121,11 @@ public class OrderObject {
         this.method = method;
     }
 
-    public int getPrice() {
+    public float getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(float price) {
         this.price = price;
     }
 

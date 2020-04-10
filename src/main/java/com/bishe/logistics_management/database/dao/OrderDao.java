@@ -92,4 +92,16 @@ public interface OrderDao {
      */
     void completeOrder(int id);
 
+    /**
+     * 获取所有需要付款的订单的列表
+     * @return 返回订单列表
+     */
+    ArrayList<OrderObject> getNeedPay();
+
+    /**
+     * 支付订单
+     * @param id 订单ID
+     */
+    void payOrder(int id);
+
 }

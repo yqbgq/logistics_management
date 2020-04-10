@@ -58,4 +58,12 @@
     <update id="completeOrder" parameterType="int">
         update orders set state=2 where id=#{arg0}
     </update>
+
+    <select id="getNeedPay" resultType="com.bishe.logistics_management.database.dataObject.OrderObject">
+        select * from orders where state = 2 and checked=1
+    </select>
+
+    <update id="payOrder" parameterType="int">
+        update orders set state=3 where id=#{arg0}
+    </update>
 </mapper>

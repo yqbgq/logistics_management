@@ -124,4 +124,20 @@ public class OrderService {
     public static void completeOrder(int id){
         OrderService.orderDao.completeOrder(id);
     }
+
+    /**
+     * 获取需要支付的订单的列表
+     * @return 返回订单列表
+     */
+    public static ArrayList<OrderObject> getNeedPay(){
+        return OrderService.orderDao.getNeedPay();
+    }
+
+    /**
+     * 支付订单，按照订单的ID
+     * @param id  支付订单ID
+     */
+    public static void payOrder(int id){
+        OrderService.orderDao.payOrder(id);
+    }
 }

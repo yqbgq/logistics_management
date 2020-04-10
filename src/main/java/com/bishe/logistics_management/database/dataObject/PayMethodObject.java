@@ -11,7 +11,7 @@ public class PayMethodObject {
     private String account;
     private String bank;
     private String address;
-    private int balance;
+    private float balance;
 
     //Getter() and Setter()
     public int getId() {
@@ -54,11 +54,11 @@ public class PayMethodObject {
         this.address = address;
     }
 
-    public int getBalance() {
+    public float getBalance() {
         return balance;
     }
 
-    public void setBalance(int balance) {
+    public void setBalance(float balance) {
         this.balance = balance;
     }
     //Getter() and Setter()

@@ -2,8 +2,11 @@ package com.bishe.logistics_management.database.service;
 
 import com.bishe.logistics_management.database.dao.PayMethodDao;
 import com.bishe.logistics_management.database.dataObject.PayMethodObject;
+import com.bishe.logistics_management.database.dataObject.Payment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
 
 /**
  * 支付方式的服务类
@@ -28,5 +31,21 @@ public class PayMethodService {
      */
     public static void insertPayMethod(PayMethodObject payMethodObject){
         PayMethodService.payMethodDao.insertPayMethod(payMethodObject);
+    }
+
+    /**
+     * 获取所有支付方式的列表
+     * @return 返回支付方式列表
+     */
+    public static ArrayList<PayMethodObject> getAllPay(){
+        return PayMethodService.payMethodDao.getAllPay();
+    }
+
+    /**
+     * 支付订单
+     * @param payment 支付方式结合数据类
+     */
+    public static void payOrder(Payment payment){
+        PayMethodService.payMethodDao.payOrder(payment);
     }
 }
