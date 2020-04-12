@@ -41,7 +41,6 @@
                             <dd><a href="/send">内部交流</a></dd>
                             <dd><a href="/todolist">待办事项</a></dd>
                             <c:if test="${permission.users==1 || permission.orders==1 || permission.plan==1 || permission.warehouse==1||permission.affairs==1}"><dd><a href="/announce">发布通知</a></dd></c:if>
-                            <c:if test="${permission.users==2}"><dd><a href="https://www.baidu.com">员工操作</a></dd></c:if>
                             <c:if test="${permission.users==1}"><dd><a href="/approvelist">用户审核</a></dd></c:if>
                         </dl>
                     </li>
@@ -51,8 +50,6 @@
                 <li class="layui-nav-item">
                     <a class="" href="javascript:;">营销管理</a>
                     <dl class="layui-nav-child">
-                        <c:if test="${permission.orders==2}"><dd><a href="https://www.baidu.com">员工操作</a></dd></c:if>
-                        <c:if test="${permission.orders==1}"><dd><a href="https://www.baidu.com">主管操作</a></dd></c:if>
                         <dd><a href="/addcompany">增加货源</a></dd>
                         <dd><a href="/addorder">新增订单</a></dd>
                         <dd><a href="/orderlist">订单列表</a></dd>
@@ -64,8 +61,6 @@
                 <li class="layui-nav-item">
                     <a href="javascript:;">运力管理</a>
                     <dl class="layui-nav-child">
-                        <c:if test="${permission.plan == 2}" ><dd><a href="https://www.baidu.com">员工操作</a></dd></c:if>
-                        <c:if test="${permission.plan==1}" ><dd><a href="javascript:;">主管操作</a></dd></c:if>
                         <dd><a href="/addcar">增加运力</a></dd>
                         <dd><a href="/carlist">运力列表</a></dd>
                         <dd><a href="/managelist">运力安排</a></dd>
@@ -76,8 +71,6 @@
                     <li class="layui-nav-item">
                         <a href="javascript:;">仓库管理</a>
                         <dl class="layui-nav-child">
-                            <c:if test="${permission.warehouse == 2}" ><dd><a href="https://www.baidu.com">员工操作</a></dd></c:if>
-                            <c:if test="${permission.warehouse==1}" ><dd><a href="javascript:;">主管操作</a></dd></c:if>
                             <dd><a href="/addwarehouse">增加仓库</a></dd>
                             <dd><a href="/addwarehouseunit">增加库位</a></dd>
                             <dd><a href="/warehouselist">仓库列表</a></dd>
@@ -88,8 +81,7 @@
 				<li class="layui-nav-item">
                     <a href="javascript:;">财务管理</a>
                     <dl class="layui-nav-child">
-                        <c:if test="${permission.affairs == 2}" ><dd><a href="https://www.baidu.com">员工操作</a></dd></c:if>
-                        <c:if test="${permission.affairs==1}" ><dd><a href="javascript:;">主管操作</a></dd></c:if>
+
                         <dd><a href="/addpaymethod">新增账户</a></dd>
                         <dd><a href="/waitforpay">订单收款</a></dd>
                     </dl>
