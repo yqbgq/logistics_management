@@ -266,8 +266,8 @@ public class PlanController {
             else mv.addObject("checked","审核通过");
             ManagementObject managementObject = ManagementService.getByOrderId(id);
             mv.addObject("management",managementObject);
-            CarObject carObject = CarService.getById(managementObject.getCarid());
-            mv.addObject("car",carObject);
+            //CarObject carObject = CarService.getById(managementObject.getCarid());
+            //mv.addObject("car",carObject);
         }else{
             mv.setViewName("redirect:/log");
         }

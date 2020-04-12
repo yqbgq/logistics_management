@@ -140,4 +140,12 @@ public class OrderService {
     public static void payOrder(int id){
         OrderService.orderDao.payOrder(id);
     }
+
+    /**
+     * 获取所有前往非仓库地点的订单的列表
+     * @return 订单列表
+     */
+    public static ArrayList<OrderObject> getToOther(){
+        return OrderService.orderDao.getToOther();
+    }
 }

@@ -13,11 +13,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
  * 仓库页面拦截器
@@ -198,8 +195,11 @@ public class WarehouseController {
             ManagementService.completeOrder(id);//完成计划表
             ManagementObject managementObject = ManagementService.getByOrderId(id);
             ArrayList<ManagementObject> managementlist = ManagementService.getRunningCar(managementObject.getCarid());
+            CarObject carObject = CarService.getById(managementObject.getCarid());
             if(managementlist.size()==0){
-                CarService.arriveTarget(managementObject.getCarid());
+                OrderObject order = OrderService.getOrderById(managementObject.getCarid());
+                carObject.setCurrents(order.getEndPos());
+                CarService.arriveTarget(carObject);
             }
             WarehouseUtil.subUnitSize(id,unit);
             OrderService.completeOrder(id);

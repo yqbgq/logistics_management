@@ -18,7 +18,7 @@ public class CarObject {
     private String tags;
     private String number;
     private String target;
-    private String current;
+    private String currents;
     private String awaydate;
 
     //Getter()  and Setter()
@@ -126,12 +126,12 @@ public class CarObject {
         this.target = target;
     }
 
-    public String getCurrent() {
-        return current;
+    public String getCurrents() {
+        return currents;
     }
 
-    public void setCurrent(String current) {
-        this.current = current;
+    public void setCurrents(String currents) {
+        this.currents = currents;
     }
 
     public String getAwaydate() {

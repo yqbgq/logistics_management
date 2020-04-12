@@ -6,8 +6,8 @@
 <mapper namespace="com.bishe.logistics_management.database.dao.CarDao" >
 
     <insert id="insertCar" parameterType="com.bishe.logistics_management.database.dataObject.CarObject">
-        insert into car(driver,phone,type,brand,times,length,size,capacity,tags,number,current,state,awaydate,target) values(
-                       #{driver},#{phone},#{type},#{brand},#{times},#{length},#{size},#{capacity},#{tags},#{number},#{current},0,#{awaydate},#{target}
+        insert into car(driver,phone,type,brand,times,length,size,capacity,tags,number,currents,state,awaydate,target) values(
+                       #{driver},#{phone},#{type},#{brand},#{times},#{length},#{size},#{capacity},#{tags},#{number},#{currents},0,#{awaydate},#{target}
                                                                                           )
     </insert>
 
@@ -23,10 +23,8 @@
         select * from car where id = #{arg0}
     </select>
 
-    <!--获取符合要求的车辆，要求其能够在当前位置而且在港，要求其没有被安排任务或者安排了任务并且离港日期要晚于要求日期并且还有空余，给他凑一车 -->
-    <select id="getEmptyCar" resultType="com.bishe.logistics_management.database.dataObject.CarObject" parameterType="String">
-        select * from car
-        where (awaydate = '0000-00-00' ) or (#{arg0}>=awaydate)
+    <select id="getEmptyCar" resultType="com.bishe.logistics_management.database.dataObject.CarObject" >
+        select * from car where state = 0
     </select>
 
     <update id="subSize" parameterType="float">
@@ -37,8 +35,15 @@
         update car set awaydate = #{awaydate} where id = #{id}
     </update>
 
-    <update id="arriveTarget" parameterType="int" >
-        update car set awaydate = '0000-00-00' where id=#{arg0}
+    <update id="arriveTarget" parameterType="com.bishe.logistics_management.database.dataObject.CarObject" >
+        update car set state=0,size=capacity,currents=#{currents} where id=#{id}
     </update>
 
+    <select id="getUsed" resultType="com.bishe.logistics_management.database.dataObject.CarObject">
+        select * from car where capacity > size and state=0
+    </select>
+
+    <update id="start" parameterType="int">
+        update car set state=1 where id=#{arg0}
+    </update>
 </mapper>

@@ -1,10 +1,8 @@
 package com.bishe.logistics_management.database.dao;
 
-
 import com.bishe.logistics_management.database.dataObject.NoticeObject;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
-
 import java.util.ArrayList;
 
 /**

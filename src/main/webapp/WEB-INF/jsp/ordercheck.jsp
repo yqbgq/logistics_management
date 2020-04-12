@@ -98,7 +98,7 @@
             <div class="layui-inline">
                 <label class="layui-form-label">额外描述</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="tags" lay-verify="required" autocomplete="off" class="layui-input" style="width:800px;height:200px" value="${order.tags}" readonly>
+                    <input type="text" name="tags"  autocomplete="off" class="layui-input" style="width:800px;height:200px" value="${order.tags}" readonly>
                 </div>
             </div>
         </div>

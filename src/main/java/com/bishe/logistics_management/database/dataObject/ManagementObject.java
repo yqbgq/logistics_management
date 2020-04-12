@@ -10,7 +10,6 @@ public class ManagementObject {
     private int carid;
     private String planuser;
     private String manageuser;
-    private String away;
     private int complete;
 
     //Getter() and Setter()
@@ -53,14 +52,6 @@ public class ManagementObject {
 
     public void setManageuser(String manageuser) {
         this.manageuser = manageuser;
-    }
-
-    public String getAway() {
-        return away;
-    }
-
-    public void setAway(String away) {
-        this.away = away;
     }
 
     //Getter() and Setter()

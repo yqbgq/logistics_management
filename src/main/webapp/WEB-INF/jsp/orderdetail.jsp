@@ -40,14 +40,12 @@
                 <li class="layui-timeline-item">
                     <i class="layui-icon layui-timeline-axis"></i>
                     <div class="layui-timeline-content layui-text">
-                        <h3 class="layui-timeline-title">${management.away}</h3>
+                        <h3 class="layui-timeline-title">待更换日期</h3>
                         <p>
                             <i class="layui-icon layui-icon-file" style="font-size: 18px;"></i>&nbsp;
                             该订单由 ${management.manageuser} 安排运力<br>
                             <i class="layui-icon layui-icon-flag" style="font-size: 18px;"></i>&nbsp;
                             该订单由 车辆 ${car.number} 承运<br>
-                            <i class="layui-icon layui-icon-notice" style="font-size: 18px;"></i>&nbsp;
-                            该订单将于 ${management.away} 出发<br>
                         </p>
                     </div>
                 </li>

@@ -4,7 +4,6 @@ import com.bishe.logistics_management.database.dao.CompanyDao;
 import com.bishe.logistics_management.database.dataObject.CompanyObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 
 /**

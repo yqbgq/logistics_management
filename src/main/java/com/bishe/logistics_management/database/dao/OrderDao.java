@@ -104,4 +104,10 @@ public interface OrderDao {
      */
     void payOrder(int id);
 
+    /**
+     * 获取在途订单，且不是前往仓库
+     * @return 返回订单列表
+     */
+    ArrayList<OrderObject> getToOther();
+
 }

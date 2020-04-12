@@ -1,7 +1,7 @@
 package com.bishe.logistics_management.Controller;
 
-
 import com.bishe.logistics_management.Utils.CookieUtil;
+import com.bishe.logistics_management.Utils.ManagementUtil;
 import com.bishe.logistics_management.database.dataObject.CarObject;
 import com.bishe.logistics_management.database.dataObject.ManagementObject;
 import com.bishe.logistics_management.database.dataObject.OrderObject;
@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 
@@ -81,7 +80,7 @@ public class PowerController {
             carObject.setTimes(times);
             carObject.setTags(tags);
             carObject.setNumber(number);
-            carObject.setCurrent(current);
+            carObject.setCurrents(current);
             carObject.setState(0);
             carObject.setAwaydate("0000-00-00");
             carObject.setTarget("");
@@ -181,22 +180,16 @@ public class PowerController {
         if(CookieUtil.checkLogIn(mv,request)){
             mv.setViewName("manageplan");
             OrderObject orderObject = OrderService.getOrderById(id);
-            if(orderObject==null){
+            if(orderObject==null){//防止读取错误的订单
                 mv.setViewName("redirect:/orderlist");
                 return mv;
             }
-            ArrayList<CarObject> cars = CarService.getEmptyCar(orderObject.getEndDate());
-            for(int i=0;i<cars.size();i++){
-                if(cars.get(i).getSize() <= orderObject.getVolume())cars.get(i).setId(-1);
-                if(cars.get(i).getAwaydate().equals("0000-00-00"))cars.get(i).setAwaydate("尚未安排");
-            }
+            ArrayList<CarObject> cars = CarService.getEmptyCar();
+            for(int i=0;i<cars.size();i++)cars.get(i).setTags(ManagementUtil.combineCarAndManagement(cars.get(i).getId()));
             mv.addObject("cars",cars);
             mv.addObject("order",orderObject);
-            if(orderObject.getMethod()==1){
-                mv.addObject("method","按立方计数");
-            }else{
-                mv.addObject("method","按重量计数");
-            }
+            if(orderObject.getMethod()==1)mv.addObject("method","按立方计数");
+            else mv.addObject("method","按重量计数");
         }else{
             mv.setViewName("redirect:/log");
         }
@@ -208,26 +201,22 @@ public class PowerController {
      * @param request 请求类
      * @param orderid 订单ID
      * @param carid 车辆ID
-     * @param date 预定离港信息
      * @return 返回MV
      */
     @RequestMapping("associateorder/{orderid}/{carid}")
     public ModelAndView associateOrder(HttpServletRequest request,
                                        @PathVariable("orderid") int orderid,
-                                       @PathVariable("carid") int carid,
-                                       @RequestParam("dates") String date){
+                                       @PathVariable("carid") int carid){
         ModelAndView mv = new ModelAndView();
         if(CookieUtil.checkLogIn(mv,request)){
             mv.setViewName("redirect:/orderlist");
-            OrderService.manageId(orderid);
+            OrderService.manageId(orderid);//修改订单的状态state为1
             CarObject car = CarService.getById(carid);
             OrderObject order = OrderService.getOrderById(orderid);
             CarService.subSize(carid,car.getSize()-order.getVolume());
-            car.setAwaydate(date);
-            CarService.updateAway(car);
+
             UsersObject user = UserService.getUser(Integer.valueOf(CookieUtil.getValue(request,"id")));
             ManagementObject managementObject = new ManagementObject();
-            managementObject.setAway(date);
             managementObject.setCarid(carid);
             managementObject.setOrderid(orderid);
             managementObject.setManageuser(user.getName());
@@ -257,7 +246,95 @@ public class PowerController {
         return mv;
     }
 
+    /**
+     * 显示在途的但不是去仓库的订单
+     * @param request 请求类
+     * @return 返回MV
+     */
+    @RequestMapping("onroadtoother")
+    public ModelAndView onRoadToOther(HttpServletRequest request){
+        ModelAndView mv = new ModelAndView();
+        if(CookieUtil.checkLogIn(mv,request)){
+            mv.setViewName("onroadtoother");
+            ArrayList<OrderObject> o = OrderService.getToOther();
+            ArrayList<OrderObject> orders = new ArrayList<>();
+            for(int i=0;i<o.size();i++){
+                ManagementObject m = ManagementService.getByOrderId(o.get(i).getId());
+                CarObject c = CarService.getById(m.getCarid());
+                if(c.getState()==1)orders.add(o.get(i));
+            }
+            mv.addObject("orders",orders);
+        }else{
+            mv.setViewName("redirect:/log");
+        }
+        return mv;
+    }
 
+    /**
+     * 将在途的所有不是前往仓库的订单入库
+     * @param request 请求类
+     * @param id 订单ID
+     * @return 返回MV
+     */
+    @RequestMapping("intoother/{id}")
+    public ModelAndView intoOther(HttpServletRequest request,
+                                  @PathVariable("id") int id){
+        ModelAndView mv = new ModelAndView();
+        if(CookieUtil.checkLogIn(mv,request)){
+            mv.setViewName("redirect:/onroadtoother");
+            ManagementService.completeOrder(id);//完成计划表
+            ManagementObject managementObject = ManagementService.getByOrderId(id);
+            ArrayList<ManagementObject> managementlist = ManagementService.getRunningCar(managementObject.getCarid());
+            CarObject carObject = CarService.getById(managementObject.getCarid());
+            if(managementlist.size()==0){
+                OrderObject order = OrderService.getOrderById(managementObject.getOrderid());
+                carObject.setCurrents(order.getEndPos());
+                CarService.arriveTarget(carObject);
+            }
+            OrderService.completeOrder(id);
+        }else{
+            mv.setViewName("redirect:/log");
+        }
+        return mv;
+    }
 
+    /**
+     * 将车辆发出，显示相关的信息
+     * @param request 请求类
+     * @return 返回MV
+     */
+    @RequestMapping("startcar")
+    public ModelAndView StartCar(HttpServletRequest request){
+        ModelAndView mv = new ModelAndView();
+        if(CookieUtil.checkLogIn(mv,request)){
+            mv.setViewName("startcar");
+            ArrayList<CarObject> cars = CarService.getUsed();
+            for(int i=0;i<cars.size();i++){
+                cars.get(i).setTags(ManagementUtil.combineCarAndManagement(cars.get(i).getId()));
+            }
+            mv.addObject("cars",cars);
+        }else{
+            mv.setViewName("redirect:/log");
+        }
+        return mv;
+    }
 
+    /**
+     * 发出订单，确认并且插入数据库
+     * @param request 请求类
+     * @param id 订单ID
+     * @return 返回MV
+     */
+    @RequestMapping("startcarcheck/{id}")
+    public ModelAndView StartCarCheck(HttpServletRequest request,
+                                      @PathVariable("id") int id){
+        ModelAndView mv = new ModelAndView();
+        if(CookieUtil.checkLogIn(mv,request)){
+            mv.setViewName("redirect:/startcar");
+            CarService.start(id);
+        }else{
+            mv.setViewName("redirect:/log");
+        }
+        return mv;
+    }
 }

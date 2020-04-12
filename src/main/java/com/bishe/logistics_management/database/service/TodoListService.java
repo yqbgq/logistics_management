@@ -4,7 +4,6 @@ import com.bishe.logistics_management.database.dao.TodoListDao;
 import com.bishe.logistics_management.database.dataObject.TodoListObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 
 /**

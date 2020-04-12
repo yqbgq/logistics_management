@@ -3,7 +3,6 @@ package com.bishe.logistics_management.database.dao;
 import com.bishe.logistics_management.database.dataObject.CarObject;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
-
 import java.util.ArrayList;
 
 /**
@@ -40,10 +39,9 @@ public interface CarDao {
 
     /**
      * 获取满足条件的车辆
-     * @param awaydate 离港日期
      * @return 返回满足条件的车辆的列表
      */
-    ArrayList<CarObject> getEmptyCar(String awaydate);
+    ArrayList<CarObject> getEmptyCar();
 
     /**
      * 修改车辆信息，减去载货空间
@@ -60,8 +58,19 @@ public interface CarDao {
 
     /**
      * 设置车辆到达
-     * @param carId 车辆ID
+     * @param carObject 车辆数据类
      */
-    //todo 这里车辆还要修改很多东西，但是今天没时间了
-    void arriveTarget(int carId);
+    void arriveTarget(CarObject carObject);
+
+    /**
+     * 获取所有已经有货物装载并且没有发出的车辆
+     * @return 车辆列表
+     */
+    ArrayList<CarObject> getUsed();
+
+    /**
+     * 将车辆设置为发出状态
+     * @param id 车辆ID
+     */
+    void start(int id);
 }

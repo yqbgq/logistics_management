@@ -71,8 +71,7 @@
 
 
 </fieldset>
-<script src="./layui/layui.js" charset="utf-8"></script>
-<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+<script src="./layui/layui.all.js" charset="utf-8"></script>
 <script>
     layui.use(['form', 'layedit', 'laydate'], function(){
         var form = layui.form
@@ -81,6 +80,9 @@
             ,laydate = layui.laydate;
     });
 </script>
-
+<div class="layui-footer">
+    <!-- 底部固定区域 -->
+    鸣谢：LayUI
+</div>
 </body>
 </html>

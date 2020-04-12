@@ -4,7 +4,6 @@ import com.bishe.logistics_management.database.dataObject.PayMethodObject;
 import com.bishe.logistics_management.database.dataObject.Payment;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
-
 import java.util.ArrayList;
 
 /**

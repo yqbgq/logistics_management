@@ -5,7 +5,6 @@ import com.bishe.logistics_management.database.dao.ManagementDao;
 import com.bishe.logistics_management.database.dataObject.ManagementObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 
 /**
@@ -57,5 +56,13 @@ public class ManagementService {
      */
     public static ArrayList<ManagementObject> getRunningCar(int carId){
         return ManagementService.managementDao.getRunningCar(carId);
+    }
+
+    /**
+     * 获取所有没有完成的计划的列表
+     * @return 计划列表
+     */
+    public static ArrayList<ManagementObject> getUncomplete(){
+        return ManagementService.managementDao.getUncomplete();
     }
 }

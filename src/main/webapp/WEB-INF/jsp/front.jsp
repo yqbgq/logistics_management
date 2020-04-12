@@ -64,6 +64,8 @@
                         <dd><a href="/addcar">增加运力</a></dd>
                         <dd><a href="/carlist">运力列表</a></dd>
                         <dd><a href="/managelist">运力安排</a></dd>
+                        <dd><a href="/onroadtoother">在途管理</a></dd>
+                        <dd><a href="/startcar">运力发出</a></dd>
                     </dl>
                 </li>
                 </c:if>

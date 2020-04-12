@@ -3,7 +3,6 @@ package com.bishe.logistics_management.database.dao;
 import com.bishe.logistics_management.database.dataObject.ManagementObject;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
-
 import java.util.ArrayList;
 
 /**
@@ -39,4 +38,10 @@ public interface ManagementDao {
      * @return 返回车辆负责的安排表
      */
     ArrayList<ManagementObject> getRunningCar(int carId);
+
+    /**
+     * 获取没有完成的计划
+     * @return 返回没有完成的计划的列表
+     */
+    ArrayList<ManagementObject> getUncomplete();
 }

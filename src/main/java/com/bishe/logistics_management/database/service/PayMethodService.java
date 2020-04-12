@@ -5,7 +5,6 @@ import com.bishe.logistics_management.database.dataObject.PayMethodObject;
 import com.bishe.logistics_management.database.dataObject.Payment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 
 /**

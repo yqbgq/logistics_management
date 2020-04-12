@@ -1,6 +1,5 @@
 package com.bishe.logistics_management.database.dao;
 
-
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 

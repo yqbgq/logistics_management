@@ -56,11 +56,10 @@ public class CarService {
 
     /**
      * 获取符合要求的空车
-     * @param awaydate 车辆离港日期
      * @return 返回车辆列表
      */
-    public static ArrayList<CarObject> getEmptyCar(String awaydate){
-        return CarService.carDao.getEmptyCar(awaydate);
+    public static ArrayList<CarObject> getEmptyCar(){
+        return CarService.carDao.getEmptyCar();
     }
 
     /**
@@ -78,9 +77,25 @@ public class CarService {
 
     /**
      * 车辆到达目的地店
-     * @param carId 车辆ID
+     * @param carObject 车辆数据类
      */
-    public static void arriveTarget(int carId){
-        CarService.carDao.arriveTarget(carId);
+    public static void arriveTarget(CarObject carObject){
+        CarService.carDao.arriveTarget(carObject);
+    }
+
+    /**
+     * 返回已经装载了货物但是没有出发的车辆列表
+     * @return 车辆列表
+     */
+    public static ArrayList<CarObject> getUsed(){
+        return CarService.carDao.getUsed();
+    }
+
+    /**
+     * 车辆发出功能
+     * @param id 车辆ID
+     */
+    public static void start(int id){
+         CarService.carDao.start(id);
     }
 }

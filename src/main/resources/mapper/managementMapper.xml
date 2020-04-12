@@ -6,7 +6,7 @@
 <mapper namespace="com.bishe.logistics_management.database.dao.ManagementDao" >
 
     <insert id="insertManagement" parameterType="com.bishe.logistics_management.database.dataObject.ManagementObject">
-        insert into management(orderid,carid,planuser,manageuser,away,complete) values(#{orderid},#{carid},#{planuser},#{manageuser},#{away},0)
+        insert into management(orderid,carid,planuser,manageuser,complete) values(#{orderid},#{carid},#{planuser},#{manageuser},0)
     </insert>
 
     <select id="getByOrderId" parameterType="int" resultType="com.bishe.logistics_management.database.dataObject.ManagementObject">
@@ -18,7 +18,11 @@
     </update>
 
     <select id="getRunningCar" parameterType="int" resultType="com.bishe.logistics_management.database.dataObject.ManagementObject">
-        select * from management where carid = #{arg0}
+        select * from management where carid = #{arg0} and complete=0
+    </select>
+
+    <select id="getUncomplete" resultType="com.bishe.logistics_management.database.dataObject.ManagementObject">
+        select * from management where complete=0
     </select>
 
 </mapper>

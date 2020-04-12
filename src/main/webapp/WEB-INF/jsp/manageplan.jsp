@@ -114,26 +114,24 @@
 
     <table class="layui-table" lay-even="" lay-skin="row" >
         <colgroup>
-            <col width="150">
+            <col width="120">
             <col width="100">
             <col width="120">
             <col width="120">
             <col width="150">
             <col width="120">
-            <col width="100">
-            <col width="230">
-            <col width="100">
+            <col width="400">
+            <col width="200">
         </colgroup>
         <thead>
         <tr>
             <th style="text-align:center;margin:auto">车辆牌照</th>
             <th style="text-align:center;margin:auto">车辆类型</th>
             <th style="text-align:center;margin:auto">车长（米）</th>
-            <th style="text-align:center;margin:auto">司机</th>
-            <th style="text-align:center;margin:auto">联系电话</th>
             <th style="text-align:center;margin:auto">剩余空间（立方）</th>
             <th style="text-align:center;margin:auto">离港日期</th>
-            <th style="text-align:center;margin:auto">安排日期</th>
+            <th style="text-align:center;margin:auto">当前位置</th>
+            <th style="text-align:center;margin:auto">计划详情</th>
             <th style="text-align:center;margin:auto">选择</th>
         </tr>
         </thead>
@@ -144,12 +142,11 @@
                     <td style="text-align:center;margin:auto">${item.number}</td>
                     <td style="text-align:center;margin:auto">${item.type}</td>
                     <td style="text-align:center;margin:auto">${item.length}</td>
-                    <td style="text-align:center;margin:auto">${item.driver}</td>
-                    <td style="text-align:center;margin:auto">${item.phone}</td>
                     <td style="text-align:center;margin:auto">${item.size}</td>
                     <td style="text-align:center;margin:auto">${item.awaydate}</td>
+                    <td style="text-align:center;margin:auto">${item.currents}</td>
+                    <td style="text-align:center;margin:auto">${item.tags}</td>
                     <form action="/associateorder/${order.id}/${item.id}" method="post">
-                        <td style="text-align:center;margin:auto"><input type="date" name="dates" lay-verify="date" placeholder="yyyy-MM-dd" class="layui-input"/></td>
                         <td style="text-align:center;margin:auto"><button type="submit" class="layui-btn" lay-submit="" lay-filter="demo1">安排</button></td>
                     </form>
                 </tr>
