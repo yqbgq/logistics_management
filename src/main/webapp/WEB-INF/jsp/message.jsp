@@ -12,7 +12,7 @@
                 <div class="layui-input-inline">
                     <select name="users" lay-verify="required" lay-search="">
                         <c:forEach var="item" items="${array}" varStatus="status">
-                            <option value="${item.id}" selected>${item.id} - ${item.name}</option>
+                            <option value="${item.id}" selected>员工编号：${item.id} - ${item.name}</option>
                         </c:forEach>
                     </select>
                 </div>

@@ -37,7 +37,7 @@
 </form>
 </div>
 </div>
-<script src="./layui/layui.js" charset="utf-8"></script>
+<script src="./layui/layui.all.js" charset="utf-8"></script>
 <script>
     layui.use(['form', 'layedit', 'laydate'], function(){
         var form = layui.form

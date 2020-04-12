@@ -90,15 +90,7 @@
                 <div class="layui-inline">
                     <label class="layui-form-label">用户密码</label>
                     <div class="layui-input-inline">
-                        <input type="password" name="pw1" lay-verify="required" autocomplete="off" class="layui-input"value=${user.getPassword()}>
-                    </div>
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <div class="layui-inline">
-                    <label class="layui-form-label">确认密码</label>
-                    <div class="layui-input-inline">
-                        <input type="password" name="pw2" lay-verify="required" autocomplete="off" class="layui-input" value=${user.getPassword()}>
+                        <input type="text" name="pw1" lay-verify="required" autocomplete="off" class="layui-input"value=${user.getPassword()}>
                     </div>
                 </div>
             </div>
