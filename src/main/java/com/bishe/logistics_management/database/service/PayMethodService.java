@@ -47,4 +47,13 @@ public class PayMethodService {
     public static void payOrder(Payment payment){
         PayMethodService.payMethodDao.payOrder(payment);
     }
+
+    /**
+     * 按照ID获取支付方式
+     * @param id 支付方式ID
+     * @return 返回支付方式
+     */
+    public static PayMethodObject getById(int id){
+        return PayMethodService.payMethodDao.getById(id);
+    }
 }

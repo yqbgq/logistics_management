@@ -31,4 +31,11 @@ public interface PayMethodDao {
      * @param payment payment数据类，包含支付方式以及支付金额
      */
     void payOrder(Payment payment);
+
+    /**
+     * 按照支付方式的ID获取支付方式
+     * @param id 支付方式ID
+     * @return 返回支付方式
+     */
+    PayMethodObject getById(int id);
 }

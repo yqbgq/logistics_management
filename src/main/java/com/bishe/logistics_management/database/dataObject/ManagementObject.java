@@ -11,6 +11,7 @@ public class ManagementObject {
     private String planuser;
     private String manageuser;
     private int complete;
+    private String endtime;
 
     //Getter() and Setter()
 
@@ -52,6 +53,22 @@ public class ManagementObject {
 
     public void setManageuser(String manageuser) {
         this.manageuser = manageuser;
+    }
+
+    public int getComplete() {
+        return complete;
+    }
+
+    public void setComplete(int complete) {
+        this.complete = complete;
+    }
+
+    public String getEndtime() {
+        return endtime;
+    }
+
+    public void setEndtime(String endtime) {
+        this.endtime = endtime;
     }
 
     //Getter() and Setter()

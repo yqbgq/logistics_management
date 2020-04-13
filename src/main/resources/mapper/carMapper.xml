@@ -44,6 +44,6 @@
     </select>
 
     <update id="start" parameterType="int">
-        update car set state=1 where id=#{arg0}
+        update car set state=1,awaydate=now() where id=#{arg0}
     </update>
 </mapper>

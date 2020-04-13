@@ -17,38 +17,18 @@
             </fieldset>
 
             <ul class="layui-timeline">
+
+                <c:forEach var="item" items="${details}" varStatus="status">
                 <li class="layui-timeline-item">
                     <i class="layui-icon layui-timeline-axis"></i>
                     <div class="layui-timeline-content layui-text">
-                        <h3 class="layui-timeline-title">${order.openDate}</h3>
+                        <h3 class="layui-timeline-title">${item.title}</h3>
                         <p>
-                            <i class="layui-icon layui-icon-template-1" style="font-size: 18px;"></i>&nbsp;
-                            该订单由 ${management.planuser} 于 ${order.openDate} 创建<br>
-                            <i class="layui-icon layui-icon-friends" style="font-size: 18px;"></i>&nbsp;
-                            ${checked}<br>
-                            <i class="layui-icon layui-icon-component" style="font-size: 18px;"></i>&nbsp;
-                            委托单位 ： ${order.company}<br>
-                            <i class="layui-icon layui-icon-location" style="font-size: 18px;"></i>&nbsp;
-                            起始地点 ： ${order.startPos}<br>
-                            <i class="layui-icon layui-icon-location" style="font-size: 18px;"></i>&nbsp;
-                            目的地点 ： ${order.endPos}<br>
-                            <i class="layui-icon layui-icon-note" style="font-size: 18px;"></i>&nbsp;
-                            截止日期 ： ${order.endDate}br>
+                            ${item.content}
                         </p>
                     </div>
                 </li>
-                <li class="layui-timeline-item">
-                    <i class="layui-icon layui-timeline-axis"></i>
-                    <div class="layui-timeline-content layui-text">
-                        <h3 class="layui-timeline-title">待更换日期</h3>
-                        <p>
-                            <i class="layui-icon layui-icon-file" style="font-size: 18px;"></i>&nbsp;
-                            该订单由 ${management.manageuser} 安排运力<br>
-                            <i class="layui-icon layui-icon-flag" style="font-size: 18px;"></i>&nbsp;
-                            该订单由 车辆 ${car.number} 承运<br>
-                        </p>
-                    </div>
-                </li>
+                </c:forEach>
 
             </ul>
 

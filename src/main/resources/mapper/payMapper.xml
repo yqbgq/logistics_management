@@ -16,4 +16,8 @@
     <update id="payOrder" parameterType="com.bishe.logistics_management.database.dataObject.Payment">
         update paymethod set balance = #{num} + balance where id = #{id}
     </update>
+
+    <select id="getById" parameterType="int" resultType="com.bishe.logistics_management.database.dataObject.PayMethodObject">
+        select * from paymethod where id = #{arg0}
+    </select>
 </mapper>

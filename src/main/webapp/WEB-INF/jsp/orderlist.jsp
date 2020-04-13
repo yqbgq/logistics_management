@@ -18,7 +18,7 @@
         <th style="text-align:center;margin:auto">目的地点</th>
         <th style="text-align:center;margin:auto">货物类型</th>
         <th style="text-align:center;margin:auto">截止日期</th>
-        <th style="text-align:center;margin:auto">详细信息</th>
+        <th style="text-align:center;margin:auto">详细信息/审核订单</th>
     </tr>
     </thead>
     <tbody>

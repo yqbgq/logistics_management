@@ -1,6 +1,7 @@
 package com.bishe.logistics_management.Controller;
 
 import com.bishe.logistics_management.Utils.CookieUtil;
+import com.bishe.logistics_management.Utils.OrderDetailUtil;
 import com.bishe.logistics_management.Utils.UserUtil;
 import com.bishe.logistics_management.database.dataObject.*;
 import com.bishe.logistics_management.database.service.*;
@@ -73,8 +74,6 @@ public class PlanController {
     }
 
 
-    //todo 新增订单从仓库时候，需要增加下拉列表
-    //todo 关联上订单和仓库信息
     /**
      * 添加订单，并且插入数据库
      * @param request 请求类
@@ -264,10 +263,8 @@ public class PlanController {
             else mv.addObject("method","按照重量");
             if(orderObject.getChecked()==0)mv.addObject("checked","暂未审核");
             else mv.addObject("checked","审核通过");
-            ManagementObject managementObject = ManagementService.getByOrderId(id);
-            mv.addObject("management",managementObject);
-            //CarObject carObject = CarService.getById(managementObject.getCarid());
-            //mv.addObject("car",carObject);
+            ArrayList<OrderDetailObject> details = OrderDetailUtil.generate(orderObject);
+            mv.addObject("details",details);
         }else{
             mv.setViewName("redirect:/log");
         }

@@ -2,13 +2,8 @@ package com.bishe.logistics_management.Controller;
 
 
 import com.bishe.logistics_management.Utils.CookieUtil;
-import com.bishe.logistics_management.database.dataObject.CompanyObject;
-import com.bishe.logistics_management.database.dataObject.OrderObject;
-import com.bishe.logistics_management.database.dataObject.PayMethodObject;
-import com.bishe.logistics_management.database.dataObject.Payment;
-import com.bishe.logistics_management.database.service.CompanyService;
-import com.bishe.logistics_management.database.service.OrderService;
-import com.bishe.logistics_management.database.service.PayMethodService;
+import com.bishe.logistics_management.database.dataObject.*;
+import com.bishe.logistics_management.database.service.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -120,11 +115,18 @@ public class PayController {
         ModelAndView mv = new ModelAndView();
         if(CookieUtil.checkLogIn(mv,request)){
             mv.setViewName("redirect:/waitforpay");
+            UsersObject usersObject = UserService.getUser(Integer.valueOf(CookieUtil.getValue(request,"id")));
             OrderService.payOrder(id);
             Payment payment = new Payment();
             payment.setId(method);
             payment.setNum(total);
             PayMethodService.payOrder(payment);
+            PayRecordObject payRecordObject = new PayRecordObject();
+            payRecordObject.setOrders(id);
+            payRecordObject.setMoney(total);
+            payRecordObject.setPayId(method);
+            payRecordObject.setUser(usersObject.getName());
+            PayRecordService.insertPayRecord(payRecordObject);
         }else{
             mv.setViewName("redirect:/log");
         }
