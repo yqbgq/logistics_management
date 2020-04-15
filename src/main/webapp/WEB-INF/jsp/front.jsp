@@ -15,7 +15,12 @@
         <div class="layui-logo">物流管理系统</div>
         <!-- 头部区域导航 视情况而定开放权限管理-->
         <ul class="layui-nav layui-layout-left">
-            <li class="layui-nav-item"><a href="/index">控制台</a></li>
+            <li class="layui-nav-item">
+                <a href="/index">
+                    <i class="layui-icon layui-icon-console" style="font-size: 18px; float:left;"></i>
+                    &nbsp;&nbsp;&nbsp;&nbsp;控制台
+                </a>
+            </li>
         </ul>
         <ul class="layui-nav layui-layout-right">
             <li class="layui-nav-item">
@@ -33,59 +38,72 @@
         <div class="layui-side-scroll">
             <!-- 左侧导航区域视情况而定开放权限 -->
             <ul class="layui-nav layui-nav-tree"  lay-filter="test">
-
                     <li class="layui-nav-item">
-                        <a class="" href="javascript:;">用户管理</a>
+                        <a class="" href="javascript:;">
+                            <i class="layui-icon layui-icon-user" style="font-size: 18px; float:left;"></i>
+                            &nbsp;&nbsp;&nbsp;&nbsp;用户管理
+                        </a>
                         <dl class="layui-nav-child">
-                            <dd><a href="/person">个人信息</a></dd>
-                            <dd><a href="/send">内部交流</a></dd>
-                            <dd><a href="/todolist">待办事项</a></dd>
-                            <c:if test="${permission.users==1 || permission.orders==1 || permission.plan==1 || permission.warehouse==1||permission.affairs==1}"><dd><a href="/announce">发布通知</a></dd></c:if>
-                            <c:if test="${permission.users==1}"><dd><a href="/approvelist">用户审核</a></dd></c:if>
+                            <dd><a href="/person">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;个人信息</a></dd>
+                            <dd><a href="/send">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;内部交流</a></dd>
+                            <dd><a href="/todolist">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;待办事项</a></dd>
+                            <c:if test="${permission.users==1 || permission.orders==1 || permission.plan==1 || permission.warehouse==1||permission.affairs==1}"><dd><a href="/announce">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;发布通知</a></dd></c:if>
+                            <c:if test="${permission.users==1}"><dd><a href="/approvelist">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用户审核</a></dd></c:if>
                         </dl>
                     </li>
 
 
                 <c:if test="${permission.orders != 0}" >
                 <li class="layui-nav-item">
-                    <a class="" href="javascript:;">营销管理</a>
+                    <a class="" href="javascript:;">
+                        <i class="layui-icon layui-icon-chart-screen" style="font-size: 18px; float:left;"></i>
+                        &nbsp;&nbsp;&nbsp;&nbsp;营销管理
+                    </a>
                     <dl class="layui-nav-child">
-                        <dd><a href="/addcompany">增加货源</a></dd>
-                        <dd><a href="/addorder">新增订单</a></dd>
-                        <dd><a href="/orderlist">订单列表</a></dd>
-                        <dd><a href="/onroad">在途订单</a></dd>
+                        <dd><a href="/addcompany">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;增加货源</a></dd>
+                        <dd><a href="/addorder">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;新增订单</a></dd>
+                        <dd><a href="/orderlist">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;订单列表</a></dd>
+                        <dd><a href="/onroad">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在途管理</a></dd>
                     </dl>
                 </li>
                 </c:if>
                 <c:if test="${permission.plan != 0}" >
                 <li class="layui-nav-item">
-                    <a href="javascript:;">运力管理</a>
+                    <a href="javascript:;">
+                        <i class="layui-icon layui-icon-flag" style="font-size: 18px; float:left;"></i>
+                        &nbsp;&nbsp;&nbsp;&nbsp;运力管理
+                    </a>
                     <dl class="layui-nav-child">
-                        <dd><a href="/addcar">增加运力</a></dd>
-                        <dd><a href="/carlist">运力列表</a></dd>
-                        <dd><a href="/managelist">运力安排</a></dd>
-                        <dd><a href="/onroadtoother">在途管理</a></dd>
-                        <dd><a href="/startcar">运力发出</a></dd>
+                        <dd><a href="/addcar">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;增加运力</a></dd>
+                        <dd><a href="/carlist">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;运力列表</a></dd>
+                        <dd><a href="/managelist">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;运力安排</a></dd>
+                        <dd><a href="/onroadtoother">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在途管理</a></dd>
+                        <dd><a href="/startcar">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;运力发出</a></dd>
                     </dl>
                 </li>
                 </c:if>
                 <c:if test="${permission.warehouse != 0}" >
                     <li class="layui-nav-item">
-                        <a href="javascript:;">仓库管理</a>
+                        <a href="javascript:;">
+                            <i class="layui-icon layui-icon-component" style="font-size: 18px; float:left;"></i>
+                            &nbsp;&nbsp;&nbsp;&nbsp;仓库管理
+                        </a>
                         <dl class="layui-nav-child">
-                            <dd><a href="/addwarehouse">增加仓库</a></dd>
-                            <dd><a href="/addwarehouseunit">增加库位</a></dd>
-                            <dd><a href="/warehouselist">仓库列表</a></dd>
+                            <dd><a href="/addwarehouse">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;增加仓库</a></dd>
+                            <dd><a href="/addwarehouseunit">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;增加库位</a></dd>
+                            <dd><a href="/warehouselist">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;仓库列表</a></dd>
                         </dl>
                     </li>
                 </c:if>
                 <c:if test="${permission.affairs != 0}" >
 				<li class="layui-nav-item">
-                    <a href="javascript:;">财务管理</a>
+                    <a href="javascript:;">
+                        <i class="layui-icon layui-icon-rmb" style="font-size: 18px; float:left;"></i>
+                        &nbsp;&nbsp;&nbsp;&nbsp;财务管理
+                    </a>
                     <dl class="layui-nav-child">
-
-                        <dd><a href="/addpaymethod">新增账户</a></dd>
-                        <dd><a href="/waitforpay">订单收款</a></dd>
+                        <dd><a href="/addpaymethod">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;新增账户</a></dd>
+                        <dd><a href="/waitforpay">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;订单收款</a></dd>
                     </dl>
                 </li>
                 </c:if>

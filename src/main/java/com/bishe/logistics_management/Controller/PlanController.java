@@ -2,6 +2,7 @@ package com.bishe.logistics_management.Controller;
 
 import com.bishe.logistics_management.Utils.CookieUtil;
 import com.bishe.logistics_management.Utils.OrderDetailUtil;
+import com.bishe.logistics_management.Utils.OrderUtil;
 import com.bishe.logistics_management.Utils.UserUtil;
 import com.bishe.logistics_management.database.dataObject.*;
 import com.bishe.logistics_management.database.service.*;
@@ -171,8 +172,16 @@ public class PlanController {
         ModelAndView mv = new ModelAndView();
         if(CookieUtil.checkLogIn(mv,request)){
             mv.setViewName("orderlist");
-            ArrayList<OrderObject> orders = OrderService.getAllOrder();
-            mv.addObject("orders",orders);
+            ArrayList<OrderObject> unpermissioned = OrderUtil.getNoPermission();
+            ArrayList<OrderObject> unmanaged = OrderUtil.getNoManagement();
+            ArrayList<OrderObject> managed = OrderUtil.getManaged();
+            ArrayList<OrderObject> arrived = OrderUtil.getArrived();
+            ArrayList<OrderObject> paid = OrderUtil.getPaid();
+            mv.addObject("unpermissioned",unpermissioned);
+            mv.addObject("unmanaged",unmanaged);
+            mv.addObject("managed",managed);
+            mv.addObject("arrived",arrived);
+            mv.addObject("paid",paid);
         }else{
             mv.setViewName("redirect:/log");
         }
