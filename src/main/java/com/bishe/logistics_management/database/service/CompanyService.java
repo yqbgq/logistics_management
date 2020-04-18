@@ -36,4 +36,12 @@ public class CompanyService {
      * @return 公司列表
      */
     public static ArrayList<CompanyObject> getAllCompany(){return companyDao.getAllCompany();}
+
+    /**
+     * 获取所有公司的总数
+     * @return 公司总数
+     */
+    public static int getNum(){
+        return companyDao.getNum();
+    }
 }

@@ -98,4 +98,20 @@ public class CarService {
     public static void start(int id){
          CarService.carDao.start(id);
     }
+
+    /**
+     * 获取车辆综述
+     * @return 车辆总数
+     */
+    public static int getCarNum(){
+        return CarService.carDao.getCarNum();
+    }
+
+    /**
+     * 获取所有在途车辆数目
+     * @return 在途车辆数目
+     */
+    public static int getCarNumInRoad(){
+        return CarService.carDao.getCarNumInRoad();
+    }
 }

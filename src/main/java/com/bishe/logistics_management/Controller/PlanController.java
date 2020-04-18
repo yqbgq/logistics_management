@@ -279,4 +279,22 @@ public class PlanController {
         }
         return mv;
     }
+
+    /**
+     * 展示公司列表的页面
+     * @param request 请求类
+     * @return 返回MV
+     */
+    @RequestMapping("companylist")
+    public ModelAndView CompanyList(HttpServletRequest request){
+        ModelAndView mv = new ModelAndView();
+        if(CookieUtil.checkLogIn(mv,request)){
+            mv.setViewName("companylist");
+            ArrayList<CompanyObject> companies = CompanyService.getAllCompany();
+            mv.addObject("companies",companies);
+        }else{
+            mv.setViewName("redirect:/log");
+        }
+        return mv;
+    }
 }

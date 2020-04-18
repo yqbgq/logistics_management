@@ -20,4 +20,6 @@
     <select id="getById" parameterType="int" resultType="com.bishe.logistics_management.database.dataObject.PayMethodObject">
         select * from paymethod where id = #{arg0}
     </select>
+
+
 </mapper>

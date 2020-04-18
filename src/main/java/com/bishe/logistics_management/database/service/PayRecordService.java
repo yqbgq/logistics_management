@@ -49,4 +49,39 @@ public class PayRecordService {
     public static PayRecordObject getPayRecordByOrderId(int orderId){
         return PayRecordService.payRecordDao.getPayRecordByOrderId(orderId);
     }
+
+    /**
+     * 获取指定月份的收款数
+     * @param time 指定月份
+     * @return 收款数
+     */
+    public static int countMoneyMonth(String time){
+        return PayRecordService.payRecordDao.countMoneyMonth(time);
+    }
+
+    /**
+     * 获取总共收款数
+     * @return 总共收款数
+     */
+    public static int countMoney(){
+        return PayRecordService.payRecordDao.countMoney();
+    }
+
+    /**
+     * 获取特定某天的收款数目
+     * @param time 特定某天
+     * @return 收款数目
+     */
+    public static int getPayNumCertainDay(String time){
+        return PayRecordService.payRecordDao.getPayNumCertainDay(time);
+    }
+
+    /**
+     * 获取特定某天的收款笔数
+     * @param time 特定某天
+     * @return 收款笔数
+     */
+    public static int getPayBillNumCertainDay(String time){
+        return PayRecordService.payRecordDao.getPayBillNumCertainDay(time);
+    }
 }

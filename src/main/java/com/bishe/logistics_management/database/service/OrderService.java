@@ -148,4 +148,47 @@ public class OrderService {
     public static ArrayList<OrderObject> getToOther(){
         return OrderService.orderDao.getToOther();
     }
+
+    /**
+     * 获取所有订单的总数
+     * @return 订单总数
+     */
+    public static int getTotalNum(){
+        return OrderService.orderDao.getTotalNum();
+    }
+
+    /**
+     * 获取这个月订单总数
+     * @param time 特定月份
+     * @return 订单总数
+     */
+    public static int getMonthNum(String time){
+        return OrderService.orderDao.getMonthNum(time);
+    }
+
+    /**
+     * 获取特定日期订单总数
+     * @param time 特定日期
+     * @return 订单总数
+     */
+    public static int getDayNum(String time){
+        return OrderService.orderDao.getDayNum(time);
+    }
+
+    /**
+     * 获取所有公司
+     * @return 所有公司
+     */
+    public static ArrayList<String> getAllCompanies(){
+        return OrderService.orderDao.getAllCompanies();
+    }
+
+    /**
+     * 获取所有公司对应关联的订单总数
+     * @param company 公司名称
+     * @return 订单总数
+     */
+    public static int getCertainCompanyNum(String company){
+        return OrderService.orderDao.getCertainCompanyNum(company);
+    }
 }

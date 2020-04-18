@@ -23,4 +23,10 @@ public interface CompanyDao {
      * @return 公司列表
      */
     ArrayList<CompanyObject> getAllCompany();
+
+    /**
+     * 获取所有公司的总数目
+     * @return 公司总数
+     */
+    int getNum();
 }

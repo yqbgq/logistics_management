@@ -32,4 +32,31 @@ public interface PayRecordDao {
      * @return 返回支付记录
      */
     PayRecordObject getPayRecordByOrderId(int orderId);
+
+    /**
+     *指定月份收款总数
+     * @param time 指定月份
+     * @return 收款总数
+     */
+    int countMoneyMonth(String time);
+
+    /**
+     * 获取总共的收款数目
+     * @return 总共收款数目
+     */
+    int countMoney();
+
+    /**
+     * 获取特定一天的收款数目
+     * @param time 特定时间
+     * @return 收款数
+     */
+    int getPayNumCertainDay(String time);
+
+    /**
+     * 获取特定一天的收款笔数
+     * @param time 特定时间
+     * @return 收款笔数
+     */
+    int getPayBillNumCertainDay(String time);
 }

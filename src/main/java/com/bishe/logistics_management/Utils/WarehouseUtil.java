@@ -5,6 +5,7 @@ import com.bishe.logistics_management.database.dataObject.WarehouseObject;
 import com.bishe.logistics_management.database.dataObject.WarehouseUnit;
 import com.bishe.logistics_management.database.service.OrderService;
 import com.bishe.logistics_management.database.service.WarehouseService;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -114,5 +115,25 @@ public class WarehouseUtil {
         units.get(unitId-1).setSize(units.get(unitId-1).getSize()-orderObject.getVolume());
         warehouseObject.setUnits(WarehouseUtil.ArrayToString(units));
         WarehouseService.subUnitSize(warehouseObject);
+    }
+
+    /**
+     * 在首页添加仓库仓储信息，包括仓库总体积和剩余体积
+     * @param mv MV
+     */
+    public static void indexAddWarehouseInformation(ModelAndView mv){
+        ArrayList<WarehouseObject> warehouseObjects = WarehouseService.getAllWarehouse();
+        int capacity = 0;
+        int size = 0;
+        for(int i=0;i<warehouseObjects.size();i++){
+            WarehouseObject w = warehouseObjects.get(i);
+            ArrayList<WarehouseUnit> units = WarehouseUtil.StringToArray(w.getUnits());
+            for(int j=0;j<units.size();j++){
+                capacity += units.get(j).getCapacity();
+                size += units.get(j).getSize();
+            }
+        }
+        mv.addObject("size",size);
+        mv.addObject("capacity",capacity);
     }
 }

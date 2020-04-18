@@ -110,4 +110,37 @@ public interface OrderDao {
      */
     ArrayList<OrderObject> getToOther();
 
+    /**
+     * 获取所有订单的总数
+     * @return 订单总数
+     */
+    int getTotalNum();
+
+    /**
+     * 获取当前月份订单数目
+     * @param time 当前月份
+     * @return 数目
+     */
+    int getMonthNum(String time);
+
+    /**
+     * 获取每天订单的数目
+     * @param time 该天的表述
+     * @return 数目
+     */
+    int getDayNum(String time);
+
+    /**
+     * 获取所有公司的列表
+     * @return 公司列表
+     */
+    ArrayList<String> getAllCompanies();
+
+    /**
+     * 获取特定公司相关订单的数目
+     * @param company 公司名称
+     * @return 相关订单数目
+     */
+    int getCertainCompanyNum(String company);
+
 }

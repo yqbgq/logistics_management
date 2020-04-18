@@ -73,4 +73,16 @@ public interface CarDao {
      * @param id 车辆ID
      */
     void start(int id);
+
+    /**
+     * 获取车辆的综述
+     * @return 数目
+     */
+    int getCarNum();
+
+    /**
+     * 获取在途车辆数目
+     * @return 数目
+     */
+    int getCarNumInRoad();
 }

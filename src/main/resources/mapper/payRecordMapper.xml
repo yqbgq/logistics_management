@@ -17,5 +17,20 @@
         select * from payrecord where orders = #{arg0}
     </select>
 
+    <select id="countMoneyMonth" parameterType="String" resultType="int">
+        select IFNULL(sum(money), 0) from payrecord where date like #{arg0}
+    </select>
+
+    <select id="countMoney" resultType="int" >
+        select sum(money) from payrecord
+    </select>
+
+    <select id="getPayNumCertainDay" parameterType="String" resultType="int">
+        select IFNULL(sum(money), 0) from payrecord where date = #{arg0}
+    </select>
+
+    <select id="getPayBillNumCertainDay" parameterType="String" resultType="int">
+        select IFNULL(count(*), 0) from payrecord where date = #{arg0}
+    </select>
 
 </mapper>

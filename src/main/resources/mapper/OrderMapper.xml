@@ -70,4 +70,24 @@
     <update id="payOrder" parameterType="int">
         update orders set state=3 where id=#{arg0}
     </update>
+
+    <select id="getTotalNum" resultType="int">
+        select count(*) from orders
+    </select>
+
+    <select id="getMonthNum"  parameterType="String" resultType="int">
+        select count(*) from orders where opendate like #{arg0}
+    </select>
+
+    <select id="getDayNum" parameterType="String" resultType="int">
+        select count(*) from orders where opendate = #{arg0}
+    </select>
+
+    <select id="getAllCompanies" resultType="String">
+        select distinct company from orders
+    </select>
+
+    <select id="getCertainCompanyNum" parameterType="String" resultType="int">
+        SELECT COUNT( * ) FROM orders WHERE company = #{arg0}
+    </select>
 </mapper>

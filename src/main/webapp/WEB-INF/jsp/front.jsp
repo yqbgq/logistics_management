@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>物流管理系统后台</title>
     <link rel="stylesheet" href="/layui/css/layui.css">
+    <script src="layui/echarts.all.js"></script>
 </head>
 <body class="layui-layout-body" style="background-color:#F5F5F5;">
 <div class="layui-layout layui-layout-admin">
@@ -61,6 +62,7 @@
                     </a>
                     <dl class="layui-nav-child">
                         <dd><a href="/addcompany">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;增加货源</a></dd>
+                        <dd><a href="/companylist">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;货源列表</a></dd>
                         <dd><a href="/addorder">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;新增订单</a></dd>
                         <dd><a href="/orderlist">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;订单列表</a></dd>
                         <dd><a href="/onroad">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在途管理</a></dd>

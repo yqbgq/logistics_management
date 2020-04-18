@@ -15,4 +15,8 @@
         select * from company
     </select>
 
+    <select id="getNum" resultType="int">
+        select count(*) from company
+    </select>
+
 </mapper>
