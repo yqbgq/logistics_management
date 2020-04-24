@@ -26,8 +26,12 @@ public class CookieUtil {
      */
     public static boolean checkLogIn(ModelAndView mv,HttpServletRequest request){
         if(CookieUtil.getValue(request,"username")!=null && CookieUtil.getValue(request,"password")!=null){
-            UserUtil.addUser(mv,request);//为MV添加用户
-            PermissionUtil.setPermission(mv,request);//为MV添加权限
+            try {
+                UserUtil.addUser(mv, request);//为MV添加用户
+                PermissionUtil.setPermission(mv, request);//为MV添加权限
+            }catch (Exception e){
+                return false;
+            }
             return true;
         }
         return false;
@@ -81,8 +85,10 @@ public class CookieUtil {
      * @param response 返回变量
      */
     public static void destroy(HttpServletRequest request, HttpServletResponse response){
-        for(String e : stack){
+        for(int i=0;i<stack.size();i++){
+            String e = stack.get(i);
             Cookie cookie = get(request, e);
+            cookie.setMaxAge(0);
             stack.remove(e);
             if (cookie != null) {
                 set(response, e, null);

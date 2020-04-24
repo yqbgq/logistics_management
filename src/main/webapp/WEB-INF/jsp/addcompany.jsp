@@ -33,13 +33,13 @@
 
     <div class="layui-form-item">
         <div class="layui-inline">
-            <label class="layui-form-label">验证手机</label>
+            <label class="layui-form-label">联系手机</label>
             <div class="layui-input-inline">
                 <input type="tel" name="phone"  autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-inline">
-            <label class="layui-form-label">验证邮箱</label>
+            <label class="layui-form-label">联系邮箱</label>
             <div class="layui-input-inline">
                 <input type="text" name="email"  autocomplete="off" class="layui-input">
             </div>

@@ -41,7 +41,7 @@
                     <select name="fromware" id="selectbox" lay-filter="select1">
                         <option value="0"> </option>
                         <option value="1">自定义地点</option>
-                        <option value="2">从仓库</option>
+                        <option value="2">自仓库</option>
                     </select>
                 </div>
             </div>
@@ -73,8 +73,8 @@
                 <div class="layui-input-inline">
                     <select name="toware" id="selectbox2" lay-filter="select2">
                         <option value="0"> </option>
-                        <option value="1">自定义地点</option>
-                        <option value="2">从仓库</option>
+                        <option value="1">至定义地点</option>
+                        <option value="2">至仓库</option>
                     </select>
                 </div>
             </div>
@@ -89,7 +89,12 @@
             <div class="layui-inline" id="toFrom2" style="display:none">
                 <label class="layui-form-label">仓库地点</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="end" autocomplete="off" class="layui-input">
+                    <select name="end" lay-filter="select2">
+                        <option value="0"> </option>
+                        <c:forEach var="item" items="${warehouses}" varStatus="status">
+                            <option value="${item.name}">${item.name}</option>
+                        </c:forEach>
+                    </select>
                 </div>
             </div>
         </div>

@@ -61,11 +61,21 @@
                         &nbsp;&nbsp;&nbsp;&nbsp;营销管理
                     </a>
                     <dl class="layui-nav-child">
+                        <c:if test="${permission.orders==1 || permission.orders==2}">
                         <dd><a href="/addcompany">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;增加货源</a></dd>
+                        </c:if>
+                        <c:if test="${permission.orders==1 || permission.orders==2}">
                         <dd><a href="/companylist">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;货源列表</a></dd>
+                        </c:if>
+                        <c:if test="${permission.orders==1 || permission.orders==2}">
                         <dd><a href="/addorder">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;新增订单</a></dd>
+                        </c:if>
+                        <c:if test="${permission.orders==1}">
                         <dd><a href="/orderlist">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;订单列表</a></dd>
+                        </c:if>
+                        <c:if test="${permission.orders==1 }">
                         <dd><a href="/onroad">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在途管理</a></dd>
+                        </c:if>
                     </dl>
                 </li>
                 </c:if>
@@ -76,11 +86,17 @@
                         &nbsp;&nbsp;&nbsp;&nbsp;运力管理
                     </a>
                     <dl class="layui-nav-child">
+                        <c:if test="${permission.plan==1 || permission.plan==2}">
                         <dd><a href="/addcar">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;增加运力</a></dd>
+                        </c:if>
+                        <c:if test="${permission.plan==1 || permission.plan==2}">
                         <dd><a href="/carlist">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;运力列表</a></dd>
                         <dd><a href="/managelist">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;运力安排</a></dd>
+                        </c:if>
+                        <c:if test="${permission.plan==1}">
                         <dd><a href="/onroadtoother">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在途管理</a></dd>
                         <dd><a href="/startcar">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;运力发出</a></dd>
+                        </c:if>
                     </dl>
                 </li>
                 </c:if>

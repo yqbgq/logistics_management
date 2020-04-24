@@ -63,9 +63,9 @@
     <form class="layui-form" action="/approveuser" method="POST">
 
         <div class="layui-form-item">
-            <label class="layui-form-label" style="margin-left:40px;">开关-默认开</label>
+            <label class="layui-form-label" style="margin-left:40px;">审核通过</label>
             <div class="layui-input-block">
-                <input type="checkbox" checked="" name="approve" lay-skin="switch" lay-filter="switchTest" lay-text="ON|OFF">
+                <input type="checkbox" checked="" name="approve" lay-skin="switch" lay-filter="switchTest" lay-text="是|否">
             </div>
         </div>
 
@@ -160,7 +160,7 @@
 
 
 
-<script src="./layui/layui.js" charset="utf-8"></script>
+<script src="../layui/layui.all.js" charset="utf-8"></script>
 <!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
 <script>
     layui.use(['element', 'layer'], function(){

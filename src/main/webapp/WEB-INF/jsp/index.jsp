@@ -4,6 +4,7 @@
 
 <div style="width:95%;margin:20px;">
 
+    <c:if test="${permission.orders==1 || permission.orders==2}">
     <div class="layui-col-sm6 layui-col-md2">
         <div class="layui-card">
             <div class="layui-card-header">
@@ -22,7 +23,8 @@
             </div>
         </div>
     </div>
-
+    </c:if>
+    <c:if test="${permission.warehouse==1 || permission.warehouse==2}">
     <div class="layui-col-sm6 layui-col-md2" style="margin-left:20px;">
         <div class="layui-card">
             <div class="layui-card-header">
@@ -41,7 +43,8 @@
             </div>
         </div>
     </div>
-
+    </c:if>
+    <c:if test="${permission.plan==1 || permission.plan==2}">
     <div class="layui-col-sm6 layui-col-md2" style="margin-left:20px;">
         <div class="layui-card">
             <div class="layui-card-header">
@@ -60,7 +63,8 @@
             </div>
         </div>
     </div>
-
+    </c:if>
+    <c:if test="${permission.affairs==1 || permission.affairs==2}">
     <div class="layui-col-sm6 layui-col-md2" style="margin-left:20px;">
         <div class="layui-card">
             <div class="layui-card-header">
@@ -79,7 +83,8 @@
             </div>
         </div>
     </div>
-
+    </c:if>
+    <c:if test="${permission.orders==1 || permission.orders==2}">
     <div class="layui-col-sm6 layui-col-md2" style="margin-left:20px;">
         <div class="layui-card">
             <div class="layui-card-header">
@@ -98,8 +103,8 @@
             </div>
         </div>
     </div>
-
-
+    </c:if>
+    <c:if test="${permission.orders==1 || permission.orders==2}">
     <div class="layui-col-sm6 layui-col-md11" style="margin-top:20px;">
         <div class="layui-card">
             <div class="layui-card-header">
@@ -111,7 +116,8 @@
             </div>
         </div>
     </div>
-
+    </c:if>
+    <c:if test="${permission.affairs==1 || permission.affairs==2}">
     <div class="layui-col-sm6 layui-col-md11" style="margin-top:20px;">
         <div class="layui-card">
             <div class="layui-card-header">
@@ -123,7 +129,7 @@
             </div>
         </div>
     </div>
-
+    </c:if>
 
 
     <div class="layui-card layui-col-sm6 layui-col-md6" style="margin-top:20px;">
@@ -141,7 +147,6 @@
                     </div>
                 </dd>
                 </c:forEach>
-
             </dl>
         </div>
     </div>
@@ -186,11 +191,14 @@
 
 <script type="text/javascript">
     // 基于准备好的dom，初始化echarts实例
+    <c:if test="${permission.orders==1 || permission.orders==2}">
     var myChart = echarts.init(document.getElementById('main'));
     var company = echarts.init(document.getElementById('company'));
+    </c:if>
+    <c:if test="${permission.affairs==1 || permission.affairs==2}">
     var moneynum = echarts.init(document.getElementById('moneynum'));
     var moneycount = echarts.init(document.getElementById('moneycount'));
-
+    </c:if>
     // 指定图表的配置项和数据
     var option = {
         title: {
@@ -270,10 +278,14 @@
         }]
     };
     // 使用刚指定的配置项和数据显示图表。
+    <c:if test="${permission.orders==1 || permission.orders==2}">
     myChart.setOption(option);
     company.setOption(companies);
+    </c:if>
+    <c:if test="${permission.affairs==1 || permission.affairs==2}">
     moneycount.setOption(optionMoneyCount);
     moneynum.setOption(optionMoneyNum);
+    </c:if>
 </script>
 
 
