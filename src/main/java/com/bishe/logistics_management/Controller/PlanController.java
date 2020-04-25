@@ -144,7 +144,7 @@ public class PlanController {
             start = start.replaceAll(","," ");
             end = end.replaceAll(","," ");
             orderObject.setStartPos(start);
-            orderObject.setEndPos(end);
+            orderObject.setEndPos(end.replaceAll(" ",""));
             orderObject.setType(type);
             orderObject.setVolume(volume);
             orderObject.setWeight(weight);
@@ -240,7 +240,6 @@ public class PlanController {
      * @param request 请求类
      * @return 返回MV
      */
-    //todo 订单列表页面要细化
     @RequestMapping("onroad")
     public ModelAndView onRoad(HttpServletRequest request){
         ModelAndView mv = new ModelAndView();

@@ -107,9 +107,14 @@
                             &nbsp;&nbsp;&nbsp;&nbsp;仓库管理
                         </a>
                         <dl class="layui-nav-child">
+                            <c:if test="${permission.warehouse == 1}" >
                             <dd><a href="/addwarehouse">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;增加仓库</a></dd>
+                            </c:if>
                             <dd><a href="/addwarehouseunit">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;增加库位</a></dd>
                             <dd><a href="/warehouselist">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;仓库列表</a></dd>
+                            <c:if test="${permission.warehouse == 1}" >
+                            <dd><a href="/towarehouse">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;入库管理</a></dd>
+                            </c:if>
                         </dl>
                     </li>
                 </c:if>
