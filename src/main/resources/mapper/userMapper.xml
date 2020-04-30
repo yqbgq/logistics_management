@@ -10,11 +10,11 @@
     </select>
 
     <select id="check" parameterType="String" resultType="int">
-        select count(*) from users where name = #{arg0} and password = #{arg1} and available=1
+        select count(*) from users where name = #{username} and password = #{password} and available=1
     </select>
 
     <select id="getUserByAll" parameterType="String"  resultType="com.bishe.logistics_management.database.dataObject.UsersObject">
-        select * from users where name = #{arg0} and password = #{arg1}
+        select * from users where name = #{param1} and password = #{param2}
     </select>
 
     <insert id="createUser" parameterType="com.bishe.logistics_management.database.dataObject.UsersObject">
