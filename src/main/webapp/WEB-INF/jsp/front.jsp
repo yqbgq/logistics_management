@@ -30,7 +30,12 @@
                     <dd><a href="">登录记录</a></dd>
                 </dl>
             </li>
-            <li class="layui-nav-item">${user.getName()}</li>
+            <li class="layui-nav-item">
+                    <a href="javascript:;">
+                      <img src="/images/user.jpg" class="layui-nav-img">
+                      ${user.getName()}
+                    </a>
+            </li>
             <li class="layui-nav-item"><a href="/logout">退出</a></li>
         </ul>
     </div>
