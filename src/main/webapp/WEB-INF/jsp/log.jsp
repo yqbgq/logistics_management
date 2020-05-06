@@ -7,7 +7,7 @@
   <title>登录注册</title>
   <link rel="stylesheet" href="./layui/css/layui.css">
 </head>
-<body class="layui-layout-body">
+<body class="layui-layout-body" style="background-image:url(/images/bg.jpg);background-position: center center;background-repeat: no-repeat;background-attachment: fixed;background-size: cover;">
 
 
 <fieldset class="layui-elem-field" style="width:25%;margin-left:37%;margin-top:15%;">

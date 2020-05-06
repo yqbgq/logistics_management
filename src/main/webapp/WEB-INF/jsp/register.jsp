@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="./layui/css/layui.css"  media="all">
     <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
 </head>
-<body >
+<body style="background-image:url(/images/background.jpg);background-position: center center;background-repeat: no-repeat;background-attachment: fixed;background-size: cover;" >
 
 <fieldset style="width:80%;margin-left:10%;margin-top:5%">
     <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">

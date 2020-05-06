@@ -13,7 +13,7 @@
 <div style="float:left;margin:30px;width:100%;">
 
     <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-        <legend>仓库列表</legend>
+        <legend>货源列表</legend>
     </fieldset>
 
     <div class="layui-card">

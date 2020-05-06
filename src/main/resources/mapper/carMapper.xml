@@ -28,7 +28,7 @@
     </select>
 
     <update id="subSize" parameterType="float">
-        update car set size=#{arg1} where id = #{arg0}
+        update car set size=#{param2} where id = #{param1}
     </update>
 
     <update id="updateAway" parameterType="com.bishe.logistics_management.database.dataObject.CarObject">

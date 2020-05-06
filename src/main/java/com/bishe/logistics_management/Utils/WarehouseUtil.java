@@ -58,7 +58,7 @@ public class WarehouseUtil {
     public static ArrayList<WarehouseUnit> StringToArray(String raw){
         String[] tuple = raw.split("!!");
         ArrayList<WarehouseUnit> units = new ArrayList<>();
-        if(tuple.length > 0){
+        if(tuple.length > 0 && raw.length()!=0){
             for(String s : tuple){
                 String[] temp = s.split("<>");
                 WarehouseUnit e = new WarehouseUnit();
